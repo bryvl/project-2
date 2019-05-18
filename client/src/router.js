@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/views/Home';
-import Example from '@/views/Example';
+import Login from '@/views/Login';
 
 Vue.use(Router);
 
@@ -13,9 +13,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/example/:id',
-      name: 'example',
-      component: Example
+      path: '/login/',
+      name: 'login',
+      component: Login
     }
   ]
 });
