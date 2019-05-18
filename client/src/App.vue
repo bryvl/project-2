@@ -1,7 +1,29 @@
 <template>
   <div id="app">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <!-- add more router links as features needed -->
+    </div>
 
     <router-view/>
   </div>
 </template>
+
+<style lang="scss">
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+body {
+  text-align: center;
+  margin: 0 auto;
+  background-color: #ccc;
+}
+.container{
+  width: 968px;
+}
+</style>
