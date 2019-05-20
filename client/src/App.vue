@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/">Home</router-link>|
+      <router-link to="/login">Login</router-link>
       <!-- add more router links as features needed -->
     </div>
 
@@ -11,7 +12,7 @@
 
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -23,7 +24,7 @@ body {
   margin: 0 auto;
   background-color: #ccc;
 }
-.container{
+.container {
   width: 968px;
 }
 </style>
