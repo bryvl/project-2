@@ -1,0 +1,73 @@
+<template>
+  <div>
+    <b-carousel
+      id="carousel-1"
+      v-model="slide"
+      :interval="4000"
+      controls
+      indicators
+      background="#ababab"
+      img-width="1024"
+      img-height="480"
+      style="text-shadow: 1px 1px 2px #333;"
+      @sliding-start="onSlideStart"
+      @sliding-end="onSlideEnd"
+    >
+      <!-- Text slides with image -->
+      <b-carousel-slide
+        caption="Woofer"
+        text="Welcome to Woofer. The new way of bringing people and pets together"
+        img-src="https://images.unsplash.com/photo-1506993708131-b0bf29d16b76?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+      ></b-carousel-slide>
+      <!--Second pic needs higher-->
+      <b-carousel-slide
+        caption="Happy Pets"
+        text="Give your pet the opportuntiy to make a special friend and create wonderful memories doing what pets love to do"
+        img-src="https://images.unsplash.com/photo-1506838219826-ef01160e12c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1338&q=80"
+      ></b-carousel-slide>
+      <b-carousel-slide
+        caption="Happy us"
+        text="Find community, a new best friend, or a new love thanks to your pet being awesome!"
+        img-src="https://images.unsplash.com/photo-1526363269865-60998e11d82d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+      ></b-carousel-slide>
+
+      <!-- Slides with custom text
+      <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=54">
+        <h1>Hello world!</h1>
+      </b-carousel-slide>
+
+      <!-- Slides with image only -->
+      <!-- <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=58"></b-carousel-slide> --> -->
+
+
+     
+    </b-carousel>
+
+    <!-- <p class="mt-4">
+      Slide #: {{ slide }}<br>
+      Sliding: {{ sliding }}
+    </p> -->
+  </div>
+</template>
+
+<script>
+import { CarouselPlugin } from 'bootstrap-vue/es/components'
+// Vue.use(CarouselPlugin)
+
+  export default {
+    data() {
+      return {
+        slide: 0,
+        sliding: null
+      }
+    },
+    methods: {
+      onSlideStart(slide) {
+        this.sliding = true
+      },
+      onSlideEnd(slide) {
+        this.sliding = false
+      }
+    }
+  }
+</script>
