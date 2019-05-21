@@ -3,18 +3,19 @@ import Router from 'vue-router';
 import Home from '@/views/Home';
 import Login from '@/views/Login';
 import EventFeed from '@/views/Event';
+import Signup from '@/views/Signup';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: Home
     },
     {
-      path: '/login/',
+      path: '/',
       name: 'login',
       component: Login
     },
@@ -22,6 +23,11 @@ export default new Router({
       path: '/eventfeed/',
       name: 'event',
       component: EventFeed
+    },
+    {
+      path: '/signup/',
+      name: 'signup',
+      component: Signup
     }
   ]
 });

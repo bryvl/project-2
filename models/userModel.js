@@ -21,17 +21,21 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
     
-    // This first association would be to store all the events a user has created
-    User.hasMany(Event);
-
+    User.associate = function(models) {
+      // This first association would be to store all the events a user has created
+      User.hasMany(models.Event, {
+        onDelete: "cascade"
+      });
+    
     // This association might be to store all the events a user has attended
     // User.hasMany(AttendedPlayDate OR Participated/Participant);
     
     // Stores User's pets
-    User.hasMany(Pet);
-
-    
-
+    User.hasMany(models.Pet, {
+      onDelete: "cascade"
+    });
+  };
+  
     return User;
   };
   
