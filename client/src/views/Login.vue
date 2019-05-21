@@ -42,7 +42,7 @@ export default {
       localStorage.setItem("email", this.email);
     },
     onUserLoggedIn (googleUser) {
-      console.log(googleUser)
+      console.log(googleUser);
     }
   }
 };
