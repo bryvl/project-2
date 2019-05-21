@@ -53,8 +53,8 @@
 <script>
 import { CarouselPlugin } from 'bootstrap-vue/es/components'
 // Vue.use(CarouselPlugin)
-
   export default {
+    name: "Carousel",
     data() {
       return {
         slide: 0,

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import homeCarousel from '@/components/carousel.vue';
+import homeCarousel from '@/components/Carousel.vue';
 
 export default {
   name: 'Home',
