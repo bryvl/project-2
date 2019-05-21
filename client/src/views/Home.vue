@@ -1,19 +1,22 @@
 <template>
   <div class="container">
           <h1>Woofer</h1>
-  <homeCarousel/>
+  <Carousel/>
+  <GoogleMap/>
 
   </div>
 
 </template>
 
 <script>
-import homeCarousel from '@/components/carousel.vue';
+import Carousel from '@/components/carousel.vue';
+import GoogleMap from '@/components/googleMap.vue';
 
 export default {
   name: 'Home',
   components: {
-    homeCarousel
+    Carousel,
+    GoogleMap
   }
 
 }

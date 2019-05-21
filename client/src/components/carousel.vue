@@ -36,7 +36,7 @@
         <h1>Hello world!</h1>
       </b-carousel-slide>
 
-      <!-- Slides with image only -->
+      <! Slides with image only -->
       <!-- <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=58"></b-carousel-slide> --> -->
 
 
@@ -55,6 +55,7 @@ import { CarouselPlugin } from 'bootstrap-vue/es/components'
 // Vue.use(CarouselPlugin)
 
   export default {
+    name: "Carousel",
     data() {
       return {
         slide: 0,
