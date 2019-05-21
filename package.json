@@ -27,12 +27,15 @@
     "nodemon": "^1.18.7"
   },
   "dependencies": {
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.20",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "if-env": "^1.0.4",
     "mysql2": "^1.6.4",
-    "sass-loader": "^7.1.0",
     "node-sass": "^4.9.0",
-    "sequelize": "^4.41.2"
+    "sass-loader": "^7.1.0",
+    "sequelize": "^4.41.2",
+    "vue": "^2.6.10"
   }
 }
