@@ -12,7 +12,7 @@
 
 <script>
   export default {
-    name: "EventCreateModal",
+    name: "EventCreateForm",
     methods: {
       showModal() {
         this.$refs['my-modal'].show()
