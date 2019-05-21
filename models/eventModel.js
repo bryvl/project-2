@@ -16,8 +16,15 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
     
+    Event.associate = function(models) {
+
     // This first association would be to set up the UserID foreign key in the Event table
-    Event.belongsTo(User);
+    Event.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
 
     // This second association might be to store all the Participants an Event has
     // Event.hasMany(Participant);
