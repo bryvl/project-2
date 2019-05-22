@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Carousel from '@/components/carousel.vue';
-import GoogleMap from '@/components/googleMap.vue';
+import Carousel from '@/components/Carousel.vue';
+import GoogleMap from '@/components/GoogleMap.vue';
 
 export default {
   name: 'Home',

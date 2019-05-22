@@ -5,6 +5,8 @@ import 'bootstrap';
 import 'popper.js';
 import 'vue2-google-maps';
 import BootstrapVue from 'bootstrap-vue';
+import * as VueGoogleMaps from 'vue2-google-maps'
+
 
 Vue.use(BootstrapVue)
 
@@ -19,7 +21,7 @@ new Vue({
 }).$mount('#app')
 
 //GOOGLE MAPS PLUGIN Below
-import * as VueGoogleMaps from 'vue2-google-maps'
+
  
 Vue.use(VueGoogleMaps, {
   load: {
