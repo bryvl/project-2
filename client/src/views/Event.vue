@@ -9,27 +9,27 @@
                 <!-- <div class="d-block text-center">
                         <h3>Hello From My Modal!</h3>
                 </div> -->
-                <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Close Me</b-button>
+                <EventCreateForm></EventCreateForm>
             </b-modal>
             <hr>
-            <div id="feed" class="container">Actually it's here...
-
-            </div>
+            <EventFeed></EventFeed>
         </main>
     </div>    
 </template>
 <script>
 
-import { EventCreateModal } from "@/components/EventCreateModal.vue";
+import EventCreateForm from "@/components/EventCreateForm.vue"
+import EventFeed from "@/components/EventFeed.vue"
 export default {
-    name: "EventFeed",
+    name: "EventPage",
+    components: {
+        EventCreateForm,
+        EventFeed
+    },
     data: function(){
         return {
 
         }
-    },
-    components: {
-        EventCreateModal
     },
     methods: {
         gohome: function() {

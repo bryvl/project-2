@@ -21,10 +21,10 @@ module.exports = function(app) {
   });
 
   // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(
-      function(dbExample) {
-        res.json(dbExample);
+  app.post("/api/eventpage", function(req, res) {
+    db.Event.create(req.body).then(
+      function(eventData) {
+        res.json(eventData);
       }
     );
   });

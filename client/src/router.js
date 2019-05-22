@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/views/Home';
 import Login from '@/views/Login';
-import EventFeed from '@/views/Event';
+import EventPage from '@/views/Event';
 import Signup from '@/views/Signup';
 
 Vue.use(Router);
@@ -20,9 +20,9 @@ export default new Router({
       component: Login
     },
     {
-      path: '/eventfeed/',
+      path: '/eventpage/',
       name: 'event',
-      component: EventFeed
+      component: EventPage
     },
     {
       path: '/signup/',
