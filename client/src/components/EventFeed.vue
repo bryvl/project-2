@@ -9,12 +9,21 @@ export default {
 		name: "EventFeed",
 		data() {
 			return {
-				eventPosts : [],
+				eventPosts : [
+					{
+						test: 'one',
+						otherTest: 'two'
+				}, 
+					{
+						test: 'three',
+						otherTest: 'four'
+				}
+				],
 				errors : []
 			}
 		},
 		created() {
-			axios.get('http://jsonplaceholder.typicode.com/posts')
+			axios.get('/eventpage')
 			.then(response => {
 				this.eventPosts = response.data
 				console.log(this.eventPosts)
