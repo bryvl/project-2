@@ -26,12 +26,13 @@ export default {
         client_id:
           "50452222215-9ed386i1o1r9jmrptk8in5rnrbbcoh04.apps.googleusercontent.com"
       },
-      gId: "",
-      gName: "",
-      gImage: "",
-      gEmail: "",
-      gIdToken: ""
-
+      gUser: {
+        gId: "",
+        gName: "",
+        gImage: "",
+        gEmail: "",
+        gIdToken: ""
+      }
     };
   },
   mounted() {
@@ -49,11 +50,11 @@ export default {
       // console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
       // console.log("ID Token: " + id_token);
       var id_token = googleUser.getAuthResponse().id_token;
-      this.gId = profile.getId();
-      this.gName = profile.getName();
-      this.gImage = profile.getImageUrl();
-      this.gEmail = profile.getEmail();
-      this.gIdToken = id_token;
+      this.gUser.gId = profile.getId();
+      this.gUser.gName = profile.getName();
+      this.gUser.gImage = profile.getImageUrl();
+      this.gUser.gEmail = profile.getEmail();
+      this.gUser.gIdToken = id_token;
     },
     signOut() {
       var auth2 = gapi.auth2.getAuthInstance();
