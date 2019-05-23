@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     gohome: function() {
-      this.$router.push("/");
+      this.$router.push("/home");
     },
     doLogin: function() {
       localStorage.setItem("name", this.name);
