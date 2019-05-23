@@ -22,7 +22,7 @@ export default {
 				errors : []
 			}
 		},
-		created() {
+		mounted() {
 			axios.get('/api/events')
 			.then(response => {
 				this.eventPosts = response.data
