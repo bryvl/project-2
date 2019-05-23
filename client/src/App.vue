@@ -6,9 +6,9 @@
         <router-link to="/feed">Feed</router-link> |
         <router-link to="/profile">Profile</router-link>
 
-      <!-- add more router links as features needed -->
+    <!-- add more router links as features needed -->
       </div>
-
+      
     <router-view/>
   </div>
 </template>
