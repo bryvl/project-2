@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <div id="nav">
+    
       <div v-if="$router.currentRoute.name!='login'" id="nav">
       <router-link to="/home">Home</router-link> |
       <router-link to="/">Login</router-link>
       <!-- add more router links as features needed -->
-    </div>
+      </div>
 
     <router-view/>
   </div>
