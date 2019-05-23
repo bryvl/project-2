@@ -23,7 +23,7 @@ export default {
 			}
 		},
 		created() {
-			axios.get('/eventpage')
+			axios.get('/api/events')
 			.then(response => {
 				this.eventPosts = response.data
 				console.log(this.eventPosts)
