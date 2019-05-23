@@ -5,6 +5,7 @@
         <router-link to="/home">Home</router-link> |
         <router-link to="/feed">Feed</router-link> |
         <router-link to="/profile">Profile</router-link>
+
       <!-- add more router links as features needed -->
       </div>
 
