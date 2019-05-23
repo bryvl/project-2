@@ -41,7 +41,7 @@
      
     </b-carousel>
 
-    <!-- <p class="mt-4">
+    <! <p class="mt-4">
       Slide #: {{ slide }}<br>
       Sliding: {{ sliding }}
     </p> -->
