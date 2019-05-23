@@ -1,9 +1,15 @@
 <template>
   <div id="app">
     <div id="nav">
+<<<<<<< HEAD
       <router-link to="/">Home</router-link>|
       <router-link to="/login">Login</router-link>|
       <router-link to="/eventpage">Events</router-link>
+=======
+      <div v-if="$router.currentRoute.name!='login'" id="nav">
+      <router-link to="/home">Home</router-link> |
+      <router-link to="/">Login</router-link>
+>>>>>>> master
       <!-- add more router links as features needed -->
     </div>
     <router-view/>

@@ -37,6 +37,10 @@
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
     "sequelize": "^4.41.2",
+<<<<<<< HEAD
     "vue": "^2.6.10"
+=======
+    "vue2-google-maps": "^0.10.6"
+>>>>>>> master
   }
 }
