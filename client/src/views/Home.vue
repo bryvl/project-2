@@ -1,25 +1,30 @@
 <template>
-  <div class="container">
-          <h1>Woofer</h1>
-  <homeCarousel/>
-
+  <div class="home">
+    <div class="feed" @click="gofeed">
+      Feed
+    </div>
+    <div class="profile" @click="goprofile">
+      Profile
+    </div>
   </div>
 
 </template>
 
 <script>
-import homeCarousel from '@/components/Carousel.vue';
-
 export default {
   name: 'Home',
-  components: {
-    homeCarousel
+  methods: {
+    gofeed: function() {
+      this.$router.push("/feed");
+    },
+    goprofile: function() {
+      this.$router.push("/profile");
+    }
   }
-
 }
 
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>
