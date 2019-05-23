@@ -2,10 +2,18 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll().then(function(dbExamples) {
-      res.json(dbExamples);
+  app.get("/api/events", function(req, res) {
+    db.Event.findAll().then(function(eventData) {
+      res.json(eventData);
     });
+    // res.json({
+    //   eventData: [
+    //     {
+    //       id: 1, 
+    //       name: 'meet up'
+    //     }
+    //   ]
+    // })
   });
 
   app.get("/api/examples/:id", function(req, res) {
@@ -21,10 +29,10 @@ module.exports = function(app) {
   });
 
   // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(
-      function(dbExample) {
-        res.json(dbExample);
+  app.post("/api/events", function(req, res) {
+    db.Event.create(req.body).then(
+      function(eventData) {
+        res.json(eventData);
       }
     );
   });
