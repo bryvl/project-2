@@ -22,8 +22,8 @@ export default {
 				errors : []
 			}
 		},
-		created() {
-			axios.get('/eventpage')
+		mounted() {
+			axios.get('/api/events')
 			.then(response => {
 				this.eventPosts = response.data
 				console.log(this.eventPosts)

@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.STRING
       },
       userPet: {
-        type: DataTypes.String
+        type: DataTypes.STRING
       },
       description: {
         type: DataTypes.TEXT
