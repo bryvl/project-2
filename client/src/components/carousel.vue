@@ -35,7 +35,7 @@
      
     </b-carousel>
 
-    </p>
+
   </div>
 </template>
 
