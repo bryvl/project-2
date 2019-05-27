@@ -31,20 +31,10 @@
         img-src="https://images.unsplash.com/photo-1526363269865-60998e11d82d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
       ></b-carousel-slide>
 
-      <!-- Slides with custom text
-      <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=54">
-        <h1>Hello world!</h1>
-      </b-carousel-slide> -->
-
-
-
+     
      
     </b-carousel>
 
-    <!-- <p class="mt-4">
-      Slide #: {{ slide }}<br>
-      Sliding: {{ sliding }}
-    </p> -->
 
   </div>
 </template>
@@ -70,3 +60,17 @@ import { CarouselPlugin } from 'bootstrap-vue/es/components'
     }
   }
 </script>
+
+// styling to make carousel smaller for dev
+<style>
+div#g-login {
+    margin-left: 50%;
+}
+
+div#carousel-1 {
+    width: 50%;
+    margin: 0px auto;
+}
+
+
+</style>
