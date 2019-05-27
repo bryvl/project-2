@@ -61,6 +61,7 @@ import { CarouselPlugin } from 'bootstrap-vue/es/components'
   }
 </script>
 
+// styling to make carousel smaller for dev
 <style>
 div#g-login {
     margin-left: 50%;
