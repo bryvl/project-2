@@ -1,3 +1,6 @@
+
+import 'main.js';
+
 var geocoder;
   var map;
   function initialize() {

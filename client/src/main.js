@@ -12,7 +12,7 @@ Vue.use(BootstrapVue)
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
-
+// import 'maps.js';
 Vue.config.productionTip = false
 
 new Vue({
@@ -25,7 +25,7 @@ new Vue({
  
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyAzf4WzVxOrr95929Bq-ohHwX0ecyPVqXY',
+    key: 'AIzaSyDFRyu277w4V5p1mjxGseqqo1yRXqBRbBw',
     libraries: 'places', // This is required if you use the Autocomplete plugin
     // OR: libraries: 'places,drawing'
     // OR: libraries: 'places,drawing,visualization'
