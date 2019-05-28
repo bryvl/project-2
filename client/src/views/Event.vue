@@ -6,9 +6,6 @@
         </header>
         <main class="container">
             <b-modal ref="my-modal" hide-footer title="Create Event">
-                <!-- <div class="d-block text-center">
-                        <h3>Hello From My Modal!</h3>
-                </div> -->
                 <EventCreateForm></EventCreateForm>
             </b-modal>
             <hr>

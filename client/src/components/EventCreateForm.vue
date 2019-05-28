@@ -26,17 +26,17 @@
           Events must have at least 2 people attending, including you
         </b-form-invalid-feedback>        
       </b-form-group>
-      <b-row class="my-1" v-for="thing in form.types" :key="thing">
-        <b-col sm="3">
+      <!-- <b-row class="my-1" v-for="thing in form.types" :key="thing"> -->
+        <!-- <b-col sm="3">
           <label :for="`type-${thing}`">Event {{ thing }}:</label>
         </b-col>
-        <b-col sm="5">
+        <b-col sm="5"> -->
           <!-- How do we connect a v-model to form.types.date and form.types.time?? -->
           <!-- v-model="form.types[thing]" ????? -->
-          <b-form-input :id="`type-${thing}`" :type="thing"></b-form-input>
+          <!-- <b-form-input :id="`type-${thing}`" :type="thing"></b-form-input>
         </b-col>
-      </b-row>
-      <b-form-select class="mt-3" v-model="form.selectedPet" :options="form.petOptions"></b-form-select>
+      </b-row> -->
+      <!-- <b-form-select class="mt-3" v-model="form.selectedPet" :options="form.petOptions"></b-form-select> -->
       <b-form-textarea
         class="mt-3"
         id="textarea"
@@ -66,18 +66,20 @@ export default {
         eventName: '',
         eventAttendLimit: null,
         isDate: false,
-        types: [
-          'date',
-          'time'
-        ],
-        selectedPet: null,
-        petOptions: [
-          // This pet options b-form-select should be generated based on the amount of pets the given user has
-          {value: null, text: 'Select a companion to join you!'},
-          {value: 'a', text: 'first user pet'},
-          {value: 'b', text: 'second user pet'},
-          {value: 'c', text: 'third user pet'}
-        ],
+        // eventLocation will need to be added axios post request below
+        eventLocation: '',
+        // types: [
+        //   'date',
+        //   'time'
+        // ],
+        // selectedPet: null,
+        // petOptions: [
+        //   // This pet options b-form-select should be generated based on the amount of pets the given user has
+        //   {value: null, text: 'Select a companion to join you!'},
+        //   {value: 'a', text: 'first user pet'},
+        //   {value: 'b', text: 'second user pet'},
+        //   {value: 'c', text: 'third user pet'}
+        // ],
         eventDescription: ''
       },
       domain: '',
@@ -86,14 +88,21 @@ export default {
   },
   methods: {
     onSubmit(evt) {
-      evt.preventDefault()
-      console.log(JSON.stringify(this.form))
-      this.$http.post('/eventpage/', 
-        {
-          domain: this.domain
-      }), function(data, status, request) {
-
-      }
+      evt.preventDefault();
+      // console.log(JSON.stringify(this.form))
+      // axios.post('',)
+      axios.post('/api/events/', {
+          eventName: this.form.eventName,
+          eventAttendLimit: this.form.eventAttendLimit,
+          isDate: this.form.isDate,
+          eventDescription: this.form.eventDescription
+        })
+        .then(function(data){
+          console.log(data);
+        })
+        .catch(function(err){
+          console.log(err);
+        })
     },
     onReset(evt) {
       evt.preventDefault()
@@ -101,7 +110,7 @@ export default {
       this.form.eventName = ''
       this.form.eventAttendLimit = ''
       this.form.isDate = false
-      this.form.selectedPet = null
+      // this.form.selectedPet = null
       this.form.eventDescription = ''
       // Trick to reset/clear native browser form validation state
       this.show = false
