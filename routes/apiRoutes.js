@@ -35,6 +35,21 @@ module.exports = function(router) {
         res.json(specificEventData);
       });
   });
+  
+   // Checks to see if the user's email already exists in the db, if not then the user is added
+  app.post("/api/user", function(req, res) {
+    db.User.count({ where: { email: req.body.email }})
+      .then(count => {
+        if (count != 0) {
+          return false;
+        }
+        db.User.create(req.body).then(
+          function(userData) {
+            res.json(userData);
+          }
+        );
+      });
+  });
 
   // app.get("/api/examples/:id", function(req, res) {
   //   db.Example.findOne({
@@ -56,4 +71,5 @@ module.exports = function(router) {
   //     }
   //   );
   // });
+
 };
