@@ -27,14 +27,30 @@
     "nodemon": "^1.18.7"
   },
   "dependencies": {
+    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-service": "^3.7.0",
+    "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.20",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "if-env": "^1.0.4",
+    "jquery": "^3.4.1",
     "mysql2": "^1.6.4",
     "node-sass": "^4.9.0",
+<<<<<<< HEAD
     "postcss": "^7.0.16",
+=======
+    "popper.js": "^1.15.0",
+    "portal-vue": "^2.1.4",
+    "router": "^1.3.3",
+>>>>>>> 3617f35933d0732b33224303ec6f55354ad77f25
     "sass-loader": "^7.1.0",
     "sequelize": "^4.41.2",
+    "vue": "^2.6.10",
+    "vue-cli": "^2.9.6",
+    "vue-router": "^3.0.3",
+    "vue-template-compiler": "^2.5.21",
     "vue2-google-maps": "^0.10.6"
   }
 }

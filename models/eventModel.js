@@ -2,14 +2,23 @@ var User = require('./userModel');
 
 module.exports = function(sequelize, DataTypes) {
     var Event = sequelize.define("Event", {
-      name: {
+      eventName: {
         type: DataTypes.STRING
+      },
+      isDate: {
+        type: DataTypes.BOOLEAN
       },
       location: {
         type: DataTypes.STRING
       },
+      attendanceLimit: {
+        type: DataTypes.INTEGER
+      },
       dateTime: {
           type: DataTypes.STRING
+      },
+      userPet: {
+        type: DataTypes.STRING
       },
       description: {
         type: DataTypes.TEXT

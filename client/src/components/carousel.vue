@@ -45,6 +45,10 @@
       Slide #: {{ slide }}<br>
       Sliding: {{ sliding }}
     </p> -->
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3617f35933d0732b33224303ec6f55354ad77f25
   </div>
 </template>
 
