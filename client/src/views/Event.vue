@@ -78,7 +78,5 @@ export default {
 <style>
 	#titleHeader {
 		display: inline-block;
-		width: 80%;
-		color: #2f4986;
 	}
 </style>
