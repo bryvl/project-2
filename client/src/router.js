@@ -27,11 +27,6 @@ export default new Router({
       component: EventPage
     },
     {
-      path: '/api/events/',
-      name: 'event',
-      component: EventPage
-    },
-    {
       path: '/signup/',
       name: 'signup',
       component: Signup
