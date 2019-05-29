@@ -37,6 +37,10 @@ export default {
 	mounted: function(){
 		this.fetchEvents();
 	},
+	updated: function(){
+		console.log("Updated");
+		// this.fetchEvents();
+	},
 	methods: {
 		// rerenderFeed: function(){
 		// 	this.componentKey += 1;
