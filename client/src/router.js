@@ -4,7 +4,6 @@ import Home from '@/views/Home';
 import Login from '@/views/Login';
 import EventPage from '@/views/Event';
 import Signup from '@/views/Signup';
-import Feed from '@/views/Feed';
 import Profile from '@/views/Profile';
 
 Vue.use(Router);
@@ -30,11 +29,6 @@ export default new Router({
       path: '/signup/',
       name: 'signup',
       component: Signup
-    },
-    {
-      path: '/feed',
-      name: 'feed',
-      component: Feed
     },
     {
       path: '/profile',
