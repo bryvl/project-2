@@ -7,7 +7,8 @@ module.exports = function(router) {
   router.post("/api/events/", function(req, res) {
     db.Event.create({
       eventName: req.body.eventName,
-      eventAttendLimit: req.body.eventAttendLimit,
+      attendanceLimit: req.body.attendanceLimit,
+      attending: 0,
       isDate: req.body.isDate,
       eventDescription: req.body.eventDescription
     }).then(function(result) {
@@ -22,6 +23,19 @@ module.exports = function(router) {
     });
   });
 
+  // Get request for specific event page
+  router.get("/api/events/:id", function(req, res) {
+    db.Event.findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(
+      function(specificEventData) {
+        res.json(specificEventData);
+      });
+  });
+
   // app.get("/api/examples/:id", function(req, res) {
   //   db.Example.findOne({
   //     where: {
@@ -30,15 +44,6 @@ module.exports = function(router) {
   //   }).then(
   //     function(dbExamples) {
   //       res.json(dbExamples);
-  //     }
-  //   );
-  // });
-
-  // // Create a new example
-  // app.post("/api/events", function(req, res) {
-  //   db.Event.create(req.body).then(
-  //     function(eventData) {
-  //       res.json(eventData);
   //     }
   //   );
   // });

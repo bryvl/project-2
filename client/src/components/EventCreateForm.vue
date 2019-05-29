@@ -18,7 +18,7 @@
           :state="attendanceLimitState"
           type="number"
           id="input-2"
-          v-model="form.eventAttendLimit"
+          v-model="form.attendanceLimit"
           required
           placeholder="Enter max number of people to attend"
         ></b-form-input>
@@ -46,8 +46,8 @@
         max-rows="6"
       ></b-form-textarea>      
       <!-- <b-form-file accept="image/jpeg, image/png" placeholder="No Image Chosen"></b-form-file> -->
-      <b-button class="mt-3 mr-1" type="submit" variant="primary">Submit</b-button>
-      <b-button class="mt-3" type="reset" variant="danger">Reset</b-button>
+      <b-button class="mt-3 mr-1" type="submit" variant="outline-primary">Submit</b-button>
+      <b-button class="mt-3" type="reset" variant="outline-danger">Reset</b-button>
     </b-form>
 </template>
 
@@ -57,14 +57,14 @@ export default {
   name: "EventCreateForm",
   computed: {
     attendanceLimitState(){
-      return this.form.eventAttendLimit > 0 && null ? true : false 
+      return this.form.attendanceLimit > 0 ? true : false 
     }
   },
   data() {
     return {
       form: {
         eventName: '',
-        eventAttendLimit: null,
+        attendanceLimit: '',
         isDate: false,
         // eventLocation will need to be added axios post request below
         eventLocation: '',
@@ -89,11 +89,11 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      // console.log(JSON.stringify(this.form))
-      // axios.post('',)
+      console.log(JSON.stringify(this.form));
+      
       axios.post('/api/events/', {
           eventName: this.form.eventName,
-          eventAttendLimit: this.form.eventAttendLimit,
+          attendanceLimit: this.form.attendanceLimit,
           isDate: this.form.isDate,
           eventDescription: this.form.eventDescription
         })
@@ -108,7 +108,7 @@ export default {
       evt.preventDefault()
       // Reset our form values
       this.form.eventName = ''
-      this.form.eventAttendLimit = ''
+      this.form.attendanceLimit = ''
       this.form.isDate = false
       // this.form.selectedPet = null
       this.form.eventDescription = ''
