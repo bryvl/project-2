@@ -45,4 +45,19 @@ module.exports = function(app) {
       }
     );
   });
+
+  // Checks to see if the user's email already exists in the db, if not then the user is added
+  app.post("/api/user", function(req, res) {
+    db.User.count({ where: { email: req.body.email }})
+      .then(count => {
+        if (count != 0) {
+          return false;
+        }
+        db.User.create(req.body).then(
+          function(userData) {
+            res.json(userData);
+          }
+        );
+      });
+  });
 };
