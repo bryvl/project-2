@@ -18,7 +18,7 @@
           :state="attendanceLimitState"
           type="number"
           id="input-2"
-          v-model="form.eventAttendLimit"
+          v-model="form.attendanceLimit"
           required
           placeholder="Enter max number of people to attend"
         ></b-form-input>
@@ -26,17 +26,17 @@
           Events must have at least 2 people attending, including you
         </b-form-invalid-feedback>        
       </b-form-group>
-      <b-row class="my-1" v-for="thing in form.types" :key="thing">
-        <b-col sm="3">
+      <!-- <b-row class="my-1" v-for="thing in form.types" :key="thing"> -->
+        <!-- <b-col sm="3">
           <label :for="`type-${thing}`">Event {{ thing }}:</label>
         </b-col>
-        <b-col sm="5">
+        <b-col sm="5"> -->
           <!-- How do we connect a v-model to form.types.date and form.types.time?? -->
           <!-- v-model="form.types[thing]" ????? -->
-          <b-form-input :id="`type-${thing}`" :type="thing"></b-form-input>
+          <!-- <b-form-input :id="`type-${thing}`" :type="thing"></b-form-input>
         </b-col>
-      </b-row>
-      <b-form-select class="mt-3" v-model="form.selectedPet" :options="form.petOptions"></b-form-select>
+      </b-row> -->
+      <!-- <b-form-select class="mt-3" v-model="form.selectedPet" :options="form.petOptions"></b-form-select> -->
       <b-form-textarea
         class="mt-3"
         id="textarea"
@@ -46,8 +46,8 @@
         max-rows="6"
       ></b-form-textarea>      
       <!-- <b-form-file accept="image/jpeg, image/png" placeholder="No Image Chosen"></b-form-file> -->
-      <b-button class="mt-3 mr-1" type="submit" variant="primary">Submit</b-button>
-      <b-button class="mt-3" type="reset" variant="danger">Reset</b-button>
+      <b-button class="mt-3 mr-1" type="submit" variant="outline-primary">Submit</b-button>
+      <b-button class="mt-3" type="reset" variant="outline-danger">Reset</b-button>
     </b-form>
 </template>
 
@@ -57,27 +57,29 @@ export default {
   name: "EventCreateForm",
   computed: {
     attendanceLimitState(){
-      return this.form.eventAttendLimit > 0 && null ? true : false 
+      return this.form.attendanceLimit > 0 ? true : false 
     }
   },
   data() {
     return {
       form: {
         eventName: '',
-        eventAttendLimit: null,
+        attendanceLimit: '',
         isDate: false,
-        types: [
-          'date',
-          'time'
-        ],
-        selectedPet: null,
-        petOptions: [
-          // This pet options b-form-select should be generated based on the amount of pets the given user has
-          {value: null, text: 'Select a companion to join you!'},
-          {value: 'a', text: 'first user pet'},
-          {value: 'b', text: 'second user pet'},
-          {value: 'c', text: 'third user pet'}
-        ],
+        // eventLocation will need to be added axios post request below
+        eventLocation: '',
+        // types: [
+        //   'date',
+        //   'time'
+        // ],
+        // selectedPet: null,
+        // petOptions: [
+        //   // This pet options b-form-select should be generated based on the amount of pets the given user has
+        //   {value: null, text: 'Select a companion to join you!'},
+        //   {value: 'a', text: 'first user pet'},
+        //   {value: 'b', text: 'second user pet'},
+        //   {value: 'c', text: 'third user pet'}
+        // ],
         eventDescription: ''
       },
       domain: '',
@@ -86,22 +88,29 @@ export default {
   },
   methods: {
     onSubmit(evt) {
-      evt.preventDefault()
-      console.log(JSON.stringify(this.form))
-      this.$http.post('/eventpage/', 
-        {
-          domain: this.domain
-      }), function(data, status, request) {
-
-      }
+      evt.preventDefault();
+      console.log(JSON.stringify(this.form));
+      
+      axios.post('/api/events/', {
+          eventName: this.form.eventName,
+          attendanceLimit: this.form.attendanceLimit,
+          isDate: this.form.isDate,
+          eventDescription: this.form.eventDescription
+        })
+        .then(function(data){
+          console.log(data);
+        })
+        .catch(function(err){
+          console.log(err);
+        })
     },
     onReset(evt) {
       evt.preventDefault()
       // Reset our form values
       this.form.eventName = ''
-      this.form.eventAttendLimit = ''
+      this.form.attendanceLimit = ''
       this.form.isDate = false
-      this.form.selectedPet = null
+      // this.form.selectedPet = null
       this.form.eventDescription = ''
       // Trick to reset/clear native browser form validation state
       this.show = false
