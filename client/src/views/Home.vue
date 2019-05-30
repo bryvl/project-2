@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <div class="feed" @click="gofeed">
-      Feed
+    <div class="eventpage" @click="goeventpage">
+      Events
     </div>
     <div class="profile" @click="goprofile">
       Profile
@@ -14,8 +14,8 @@
 export default {
   name: 'Home',
   methods: {
-    gofeed: function() {
-      this.$router.push("/feed");
+    goeventpage: function() {
+      this.$router.push("/eventpage");
     },
     goprofile: function() {
       this.$router.push("/profile");
@@ -26,5 +26,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .home {
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas: "main sidebar";
+    grid-column-gap: 5px;
+    max-width: 968px;
+    height: 95vh;
+  }
+  .eventpage {
+    grid-area: sidebar;
+    border: solid 3px #000;
+    
+    
+  }
+  .profile {
+    grid-area: main;
+    border: solid 3px #000;
+  }
+  .profile:hover, .eventpage:hover {
+    background-color: #000;
+    color: #FFF;
+    transition: 400ms;
+  }
 </style>
