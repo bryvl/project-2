@@ -41,7 +41,6 @@ export default {
 	methods: {
 		updateFeed: function(playDate){
 			this.playDates.unshift(playDate);
-			console.log('hi');
 			this.$refs['my-modal'].hide();
 		},
 		gohome: function() {
