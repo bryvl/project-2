@@ -37,7 +37,7 @@ module.exports = function(router) {
   });
   
    // Checks to see if the user's email already exists in the db, if not then the user is added
-  app.post("/api/user", function(req, res) {
+  router.post("/api/user", function(req, res) {
     db.User.count({ where: { email: req.body.email }})
       .then(count => {
         if (count != 0) {
