@@ -10,8 +10,6 @@
       data-longtitle="true"
       data-width="300"
       data-height="50"
-      
-      
     >Login</div>
     <div v-show="signedIn">
       <button id="g-signout" @click="signOut">Logout of Google</button>

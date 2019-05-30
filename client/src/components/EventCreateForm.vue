@@ -1,5 +1,5 @@
 <template>
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+    <b-form @reset="onReset" @submit.prevent="addToFeed(playDate)" v-if="show">
         <b-form-group id="input-group-1" label="Event Name:" label-for="input-1">
           <b-form-input
             id="input-1"
@@ -46,6 +46,8 @@
         max-rows="6"
       ></b-form-textarea>      
       <!-- <b-form-file accept="image/jpeg, image/png" placeholder="No Image Chosen"></b-form-file> -->
+      <!-- NOTE: Below button is not refreshing page anymore. I don't want that necessarily, but  -->
+      <!-- that was the only way the feed was live updating. -->
       <b-button class="mt-3 mr-1" type="submit" variant="outline-primary">Submit</b-button>
       <b-button class="mt-3" type="reset" variant="outline-danger">Reset</b-button>
     </b-form>
@@ -53,16 +55,23 @@
 
 <script>
 import axios from 'axios'
+import GoogleLogin from '@/components/GoogleLogin.vue'
+
 export default {
   name: "EventCreateForm",
+  components: {
+    GoogleLogin
+  },
   computed: {
     attendanceLimitState(){
       return this.form.attendanceLimit > 0 ? true : false 
     }
   },
+  props: ['playDate'],
   data() {
     return {
       form: {
+        userName: '',
         eventName: '',
         attendanceLimit: '',
         isDate: false,
@@ -87,22 +96,23 @@ export default {
     }
   },
   methods: {
-    onSubmit(evt) {
-      evt.preventDefault();
+    addToFeed(playDate) {
+
       console.log(JSON.stringify(this.form));
-      
       axios.post('/api/events/', {
-          eventName: this.form.eventName,
-          attendanceLimit: this.form.attendanceLimit,
-          isDate: this.form.isDate,
-          eventDescription: this.form.eventDescription
-        })
-        .then(function(data){
-          console.log(data);
-        })
-        .catch(function(err){
-          console.log(err);
-        })
+        userName: '',
+        eventName: this.form.eventName,
+        attendanceLimit: this.form.attendanceLimit,
+        isDate: this.form.isDate,
+        eventDescription: this.form.eventDescription
+      })
+      .then(function(response){
+        this.$emit('updatefeed', response.data);
+        console.log("This is data: " + JSON.stringify(response.data));
+      }.bind(this))
+      .catch(function(err){
+        console.log(err);
+      })
     },
     onReset(evt) {
       evt.preventDefault()

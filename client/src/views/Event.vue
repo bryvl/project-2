@@ -6,7 +6,7 @@
 		</header>
 		<b-container>
 				<b-modal ref="my-modal" hide-footer title="Create Event">
-						<EventCreateForm></EventCreateForm>
+						<EventCreateForm @updatefeed="updateFeed"></EventCreateForm>
 				</b-modal>
 				<hr>
 				<EventFeed>
@@ -20,6 +20,8 @@ import axios from 'axios'
 import EventCreateForm from "@/components/EventCreateForm.vue"
 import EventFeed from "@/components/EventFeed.vue"
 import PlayDatePost from "@/components/PlayDatePost.vue"
+import GoogleLogin from '@/components/GoogleLogin.vue'
+
 export default {
 	name: "EventPage",
 	components: {
@@ -31,20 +33,17 @@ export default {
 		return {
 			playDates : [],
 			errors : [],
-			componentKey: 0
 		}
 	},
 	mounted: function(){
 		this.fetchEvents();
 	},
-	updated: function(){
-		console.log("Updated");
-		// this.fetchEvents();
-	},
 	methods: {
-		// rerenderFeed: function(){
-		// 	this.componentKey += 1;
-		// },
+		updateFeed: function(playDate){
+			this.playDates.unshift(playDate);
+			console.log('hi');
+			this.$refs['my-modal'].hide();
+		},
 		gohome: function() {
 			this.$router.push("/")
 		},
@@ -67,7 +66,7 @@ export default {
 				.then(function(events) {
 						for(var i = 0; i < events.data.length; i++){
 								var currentEvent = events.data[i];
-								this.playDates.push(currentEvent);
+								this.playDates.unshift(currentEvent);
 						}
 						console.log("Log for playDates[]: ");
 						console.log(this.playDates);

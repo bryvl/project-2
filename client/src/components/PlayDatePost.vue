@@ -32,9 +32,7 @@ export default {
 			if(this.playDate.attending === this.playDate.attendanceLimit) {
 				return
 			}
-			// let attending = this.playDate.attending;
 			this.playDate.attending++;
-			console.log("For " + this.playDate.eventName + ": " + this.playDate.attending);
 		},
 		goToEventPage: function(id){
 		console.log(id);

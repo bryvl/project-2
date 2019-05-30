@@ -6,13 +6,15 @@ module.exports = function(router) {
   // Get all examples
   router.post("/api/events/", function(req, res) {
     db.Event.create({
+      userName: req.body.userName,
       eventName: req.body.eventName,
       attendanceLimit: req.body.attendanceLimit,
       attending: 0,
       isDate: req.body.isDate,
       eventDescription: req.body.eventDescription
     }).then(function(result) {
-      res.json({id: result.insertId});
+      res.json(result);
+      // {id: result.insertId}
       console.log(result);
     });
   });
@@ -37,7 +39,7 @@ module.exports = function(router) {
   });
   
    // Checks to see if the user's email already exists in the db, if not then the user is added
-  app.post("/api/user", function(req, res) {
+  router.post("/api/user", function(req, res) {
     db.User.count({ where: { email: req.body.email }})
       .then(count => {
         if (count != 0) {
