@@ -46,9 +46,8 @@ export default {
       // center: { lat: 42.7796, lng:-78.63},
       mapTypeId: "terrain",
       markers: [
-          //THESE MARKERS CAN BE CHANGED TO THE POSITION OF EVENT
-          //HOWEVER, WE NEED TO GEOCODE THEM TO ADDRESS FORM
-          //markers below also have to be userLat and userLong so it represents event.
+          //These markers are set to 0 so that when the api is requested, they will
+          //be replaced by correct lat and long
         { position: { lat:0 , lng:0  } }
       ]
       
@@ -85,16 +84,12 @@ export default {
     this.userLng = response.data.results[0].geometry.location.lng;
     // console.log("The longitude is:" + userLng)
 
-// var mapData= {
-//     userLat: userLat,
-//     userLng: userLng,
-// }
 
    console.log("userlat:" + this.userLat)
-      console.log("userlng:" + this.userLng)
+      // console.log("userlng:" + this.userLng)
 }.bind(this))
 .catch(function(error){
-    console.log("this didn't work", error);
+    // console.log("this didn't work", error);
 }
 );
       }
@@ -106,23 +101,17 @@ export default {
     this.callGeocode();
     
   },
+  //The below line watches the variables userLat and userLng. if they change (which they
+  //do when the api request happens... they will be replaced by geocoded address)
    watch: {userLat: function() {
      this.markers[0].position.lat = this.userLat;
    },
     userLng: function() {
          this.markers[0].position.lng = this.userLng;
     }
-    // location: function() {
-    //   this.
-    // }
+   
     },
 
-  //   {
-  //   lat: function(newValue) {
-  //     this.gmap.panTo({
-  //       userLat: parseFloat(newValue),
-  //       userLng: parseFloat(this.userLng)
-  //     });
     }
    ;
 </script>
