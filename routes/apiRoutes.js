@@ -6,13 +6,15 @@ module.exports = function(router) {
   // Get all examples
   router.post("/api/events/", function(req, res) {
     db.Event.create({
+      userName: req.body.userName,
       eventName: req.body.eventName,
       attendanceLimit: req.body.attendanceLimit,
       attending: 0,
       isDate: req.body.isDate,
       eventDescription: req.body.eventDescription
     }).then(function(result) {
-      res.json({id: result.insertId});
+      res.json(result);
+      // {id: result.insertId}
       console.log(result);
     });
   });
