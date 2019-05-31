@@ -64,7 +64,7 @@ export default {
     axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
         params: {
             address:location,
-            key:'AIzaSyDFRyu277w4V5p1mjxGseqqo1yRXqBRbBw'
+            key:mapsKey;
         }
     })
     .then(function(response){
