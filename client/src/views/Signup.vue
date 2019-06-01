@@ -117,7 +117,13 @@ export default {
           profilePic: this.input.picture,
           description: this.input.description,
           singleReadyMingle: this.input.singleReadyMingle
-        });
+        })
+        .then(function(data) {
+          console.log(data);
+        })
+        .catch(function(err) {
+          console.log(err);
+        })
         this.input.name = "";
         this.input.email = "";
         this.input.password = "";

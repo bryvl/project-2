@@ -46,11 +46,17 @@ module.exports = function(router) {
         if (count != 0) {
           return false;
         }
-        db.User.create(req.body).then(
+        db.User.create({
+          name: req.body.name,
+          email: req.body.email,
+          password: req.body.password,
+          profilePic: req.body.profilePic,
+          description: req.body.description,
+          singleReadyMingle: req.body.singleReadyMingle,
+          }).then(
           function(userData) {
             res.json(userData);
-          }
-        );
+          });
       });
   });
 
