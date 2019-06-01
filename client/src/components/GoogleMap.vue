@@ -25,8 +25,8 @@
   </div>
 </template>
 <script>
-
-const keys = require("../../../keys/keys.js");
+require('dotenv').config()
+var keys = require("../../../keys/keys.js");
 import main from '../main.js';
 var axios = require ('axios');
 // var userLat;
@@ -60,7 +60,7 @@ export default {
     axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
         params: {
             address:location,
-            key: keys.googlemaps
+            key: "AIzaSyDFRyu277w4V5p1mjxGseqqo1yRXqBRbBw"
         }
     })
     .then(function(response){

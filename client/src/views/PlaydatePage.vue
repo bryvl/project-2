@@ -35,7 +35,7 @@ import GoogleMap from "@/components/GoogleMap";
 var eventName = "Event Name"
 
 export default {
-  name: "playdatepage",
+  name: "Playdatepage",
   components: {
     GoogleMap
   },
