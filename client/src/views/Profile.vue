@@ -49,8 +49,9 @@
         </b-row>
       </b-card>
     </div>
-
-    <AddPetForm/>
+    <div class="mt-5">
+      <AddPetForm/>
+    </div>
   </div>
 </template>
 
