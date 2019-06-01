@@ -11,6 +11,9 @@
       </div>
       
     <router-view/>
+    <div>
+      <footer v-if="$router.currentRoute.name!='home'">&copy;2019 PlayDate</footer>
+    </div>
   </div>
 </template>
 
@@ -37,5 +40,12 @@ body {
   padding: 2px 4px;
   border-radius: 5px;
   font-weight: 700;
+}
+footer {
+    position: sticky;
+    bottom: 0;
+    left: 45vw;
+    margin: 10px 0;
+    border-top: solid 1px #ccc;
 }
 </style>
