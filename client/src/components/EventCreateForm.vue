@@ -110,7 +110,7 @@ export default {
         attendanceLimit: this.form.attendanceLimit,
         isDate: this.form.isDate,
         eventDescription: this.form.eventDescription,
-        eventDescription: this.form.eventLocation,
+        eventLocation: this.form.eventLocation,
       })
       .then(function(response){
         this.$emit('updatefeed', response.data);
