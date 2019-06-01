@@ -5,8 +5,12 @@ import 'bootstrap';
 import 'popper.js';
 import 'vue2-google-maps';
 import BootstrapVue from 'bootstrap-vue';
-import * as VueGoogleMaps from 'vue2-google-maps'
-
+import * as VueGoogleMaps from 'vue2-google-maps';
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+// // fa install
+// library.add(arrows-alt-h)
+// Vue.component('font-awesome-icon', FontAwesomeIcon)
+// Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
 
