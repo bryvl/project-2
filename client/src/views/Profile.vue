@@ -13,7 +13,7 @@
         <hr>
         <h3>Your Events</h3>
         <ul id="user-events">
-            <li v-for="items in EventFeed"></li>
+            <!-- <li v-for="items in EventFeed"></li> -->
         </ul>
          <div>
             <b-card no-body class="overflow-hidden" style="max-width: 100vw; max-height: 30vh;">

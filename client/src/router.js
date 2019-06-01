@@ -5,6 +5,7 @@ import Login from '@/views/Login';
 import EventPage from '@/views/Event';
 import Signup from '@/views/Signup';
 import Profile from '@/views/Profile';
+import PlayDate from '@/views/PlayDate'
 
 Vue.use(Router);
 
@@ -34,6 +35,12 @@ export default new Router({
       path: '/profile',
       name: 'profile',
       component: Profile
+    },
+    {
+      path: '/playdate',
+      name: 'playdate',
+      component: PlayDate,
+      props: true
     }
   ]
 });
