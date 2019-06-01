@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
 		petBreed: {
 			type: DataTypes.STRING
 		},
-		petPic: {
+		petSex: {
 			type: DataTypes.STRING
 		},
 		petInfo: {
@@ -22,9 +22,10 @@ module.exports = function(sequelize, DataTypes) {
 	Pet.associate = function(models) {
 		// This first association would be to store all the Pets a user owns
 		Pet.belongsTo(models.User, {
-			foreignKey: {
-				allowNull: false
-			}
+			// foreignKey: {
+			// 	allowNull: false
+			// }
+			onDelete: "cascade"
 		});
 	};
 

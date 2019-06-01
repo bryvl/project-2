@@ -29,13 +29,8 @@
         caption="Happy us"
         text="Find community, a new best friend, or a new love thanks to your pet being awesome!"
         img-src="https://images.unsplash.com/photo-1526363269865-60998e11d82d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-      ></b-carousel-slide>
-
-     
-     
+      ></b-carousel-slide>    
     </b-carousel>
-
-
   </div>
 </template>
 
