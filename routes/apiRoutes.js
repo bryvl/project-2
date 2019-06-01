@@ -11,7 +11,8 @@ module.exports = function(router) {
       attendanceLimit: req.body.attendanceLimit,
       attending: 0,
       isDate: req.body.isDate,
-      eventDescription: req.body.eventDescription
+      eventDescription: req.body.eventDescription,
+      eventLocation: req.body.eventLocation
     }).then(function(result) {
       res.json(result);
       // {id: result.insertId}
