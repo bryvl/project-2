@@ -1,11 +1,9 @@
 <template>
-
-<div class="playdatepage">
-  <h1 class="title">"Event Name"</h1>
+  <div>
+  <h1 class="title">{{playDate.eventName}}</h1>
   <h4>"Event Description"</h4>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   <GoogleMap/>
-
 
   <div class="users">
    
@@ -13,31 +11,30 @@
    
     <div class="pets">
     <h2>Pets</h2>
-     <h3> {{userName}} </h3>
     </div>
     <div class="people">
     <h2>People</h2>
-   <h3> {{userName}} </h3>
     </div>
 
 
 
-  </div>
+  </div> 
 </div>
-
-
 </template>
 
 <script>
 
 import GoogleMap from "@/components/GoogleMap";
+import PlayDatePost from "@/components/PlayDatePost.vue"
 
 var eventName = "Event Name"
 
 export default {
-  name: "playdatepage",
+  name: "Playdatepage",
+  props: {playDate: Object},
   components: {
-    GoogleMap
+    GoogleMap,
+    PlayDatePost
   },
   methods: {
     goeventpage: function() {

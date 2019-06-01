@@ -36,8 +36,8 @@ module.exports = function(router) {
       }
     })
     .then(
-      function(specificEventData) {
-        res.json(specificEventData);
+      function(response) {
+        res.json(response);
       });
   });
   

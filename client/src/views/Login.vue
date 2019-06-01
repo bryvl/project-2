@@ -49,6 +49,7 @@ export default {
     },
     onUserLoggedIn (googleUser) {
       console.log(googleUser);
+      // not working...
     }
   }
 };
