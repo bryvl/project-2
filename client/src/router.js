@@ -5,11 +5,7 @@ import Login from '@/views/Login';
 import EventPage from '@/views/Event';
 import Signup from '@/views/Signup';
 import Profile from '@/views/Profile';
-<<<<<<< HEAD
-import PlayDate from '@/views/PlayDate'
-=======
-import playdatepage from '@/views/PlayDatePage';
->>>>>>> master
+import Playdatepage from '@/views/Playdatepage';
 
 Vue.use(Router);
 
@@ -40,19 +36,11 @@ export default new Router({
       name: 'profile',
       component: Profile
     },
-<<<<<<< HEAD
-    {
-      path: '/playdate',
-      name: 'playdate',
-      component: PlayDate,
-      props: true
-    }
-=======
      {
       path: '/playdatepage',
-      name: 'playdatedage',
-       component: playdatepage
+      name: 'Playdatepage',
+      component: Playdatepage,
+      props: true
      }
->>>>>>> master
   ]
 });
