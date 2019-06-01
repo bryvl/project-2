@@ -30,10 +30,10 @@
         <!-- <b-col sm="3">
           <label :for="`type-${thing}`">Event {{ thing }}:</label>
         </b-col>
-        <b-col sm="5"> -->
-          <!-- How do we connect a v-model to form.types.date and form.types.time?? -->
-          <!-- v-model="form.types[thing]" ????? -->
-          <!-- <b-form-input :id="`type-${thing}`" :type="thing"></b-form-input>
+    <b-col sm="5">-->
+    <!-- How do we connect a v-model to form.types.date and form.types.time?? -->
+    <!-- v-model="form.types[thing]" ????? -->
+    <!-- <b-form-input :id="`type-${thing}`" :type="thing"></b-form-input>
         </b-col>
       </b-row> -->
       <!-- <b-form-select class="mt-3" v-model="form.selectedPet" :options="form.petOptions"></b-form-select> -->
@@ -68,8 +68,8 @@ export default {
     GoogleLogin
   },
   computed: {
-    attendanceLimitState(){
-      return this.form.attendanceLimit > 0 ? true : false 
+    attendanceLimitState() {
+      return this.form.attendanceLimit > 0 ? true : false;
     }
   },
   props: ['playDate'],
@@ -81,7 +81,7 @@ export default {
         attendanceLimit: '',
         isDate: false,
         // eventLocation will need to be added axios post request below
-        eventLocation: '',
+        eventLocation: "",
         // types: [
         //   'date',
         //   'time'
@@ -94,11 +94,11 @@ export default {
         //   {value: 'b', text: 'second user pet'},
         //   {value: 'c', text: 'third user pet'}
         // ],
-        eventDescription: ''
+        eventDescription: ""
       },
-      domain: '',
+      domain: "",
       show: true
-    }
+    };
   },
   methods: {
     addToFeed(playDate) {
@@ -124,20 +124,20 @@ export default {
       })
     },
     onReset(evt) {
-      evt.preventDefault()
+      evt.preventDefault();
       // Reset our form values
-      this.form.eventName = ''
-      this.form.attendanceLimit = ''
-      this.form.isDate = false
+      this.form.eventName = "";
+      this.form.attendanceLimit = "";
+      this.form.isDate = false;
       // this.form.selectedPet = null
       this.form.eventDescription = ''
       this.form.eventLocation = ''
       // Trick to reset/clear native browser form validation state
-      this.show = false
+      this.show = false;
       this.$nextTick(() => {
-        this.show = true
-      })
+        this.show = true;
+      });
     }
   }
-}
+};
 </script>
