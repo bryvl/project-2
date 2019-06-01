@@ -6,13 +6,16 @@ module.exports = function(router) {
   // Get all examples
   router.post("/api/events/", function(req, res) {
     db.Event.create({
+      userName: req.body.userName,
       eventName: req.body.eventName,
       attendanceLimit: req.body.attendanceLimit,
       attending: 0,
       isDate: req.body.isDate,
-      eventDescription: req.body.eventDescription
+      eventDescription: req.body.eventDescription,
+      eventLocation: req.body.eventLocation
     }).then(function(result) {
-      res.json({id: result.insertId});
+      res.json(result);
+      // {id: result.insertId}
       console.log(result);
     });
   });
@@ -45,11 +48,17 @@ module.exports = function(router) {
         if (count != 0) {
           return false;
         }
-        db.User.create(req.body).then(
+        db.User.create({
+          name: req.body.name,
+          email: req.body.email,
+          password: req.body.password,
+          profilePic: req.body.profilePic,
+          description: req.body.description,
+          singleReadyMingle: req.body.singleReadyMingle,
+          }).then(
           function(userData) {
             res.json(userData);
-          }
-        );
+          });
       });
   });
 
