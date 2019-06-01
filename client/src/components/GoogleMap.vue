@@ -4,7 +4,8 @@
  v-bind:center="{lat: userLat, lng: userLng}"
   :zoom="15"
   map-type-id="terrain"
-  style="width: 500px; height: 300px"
+  style="width: 75%; height: 200px"
+  small="12"
 >
   <GmapMarker
     :key="index"
@@ -16,19 +17,16 @@
     />
 
 </GmapMap>
-<div @mouseover="callGeocode()">MOUsEOVER</div>
-<h1> {{ userLat }}  </h1>
-<h1> {{ userLng }} </h1>
+<!-- <div @mouseover="callGeocode()">MOUsEOVER</div> -->
+<h3> {{ formattedAddress }}  </h3>
+
+
 
   </div>
 </template>
 <script>
 
-// import mapfile from '../maps.js';
-// var maps = require('../maps.js');
-// import mapsapi from '../maps.js';
-// let geocode = require('../maps.js');
-// import geocode from "../maps.js";
+const keys = require("../../../keys/keys.js");
 import main from '../main.js';
 var axios = require ('axios');
 // var userLat;
@@ -42,12 +40,10 @@ export default {
       return {
       userLat: 0,
       userLng: 0,
-      //The center below should not have affect on map
-      // center: { lat: 42.7796, lng:-78.63},
+    
       mapTypeId: "terrain",
       markers: [
-          //These markers are set to 0 so that when the api is requested, they will
-          //be replaced by correct lat and long
+      
         { position: { lat:0 , lng:0  } }
       ]
       
@@ -64,56 +60,55 @@ export default {
     axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
         params: {
             address:location,
-            key:mapsKey
+            key: keys.googlemaps
         }
     })
     .then(function(response){
        //log response
-    // console.log(response);
+   
     
     // formatted address
     console.log(response.data.results[0].formatted_address);
 
-    // lat
-    // console.log(response.data.results[0].geometry.location.lat);
+  
     this.userLat = response.data.results[0].geometry.location.lat;
-    // console.log("The latitude is:" + userLat)
 
-    // long
-    // console.log(response.data.results[0].geometry.location.lng);
+
+  
     this.userLng = response.data.results[0].geometry.location.lng;
     // console.log("The longitude is:" + userLng)
 
+    this.formattedAddress = response.data.results[0].formatted_address;
 
    console.log("userlat:" + this.userLat)
-      // console.log("userlng:" + this.userLng)
+  
 }.bind(this))
 .catch(function(error){
-    // console.log("this didn't work", error);
+ 
 }
 );
       }
     },
     
   mounted() {
-    // var userLat = this.callGeocode();
-    // var userLng = this.callGeocode();
+ 
     this.callGeocode();
     
   },
-  //The below line watches the variables userLat and userLng. if they change (which they
-  //do when the api request happens... they will be replaced by geocoded address)
+
    watch: {userLat: function() {
      this.markers[0].position.lat = this.userLat;
    },
     userLng: function() {
          this.markers[0].position.lng = this.userLng;
-    }
-   
     },
+    formattedAddress: function() {
+         this.markers[0].position.lng = this.userLng;
+   this.formattedAddress = formattedAddress;
+    }
 
     }
-   ;
+}
 </script>
 
 <style lang="scss" scoped>
