@@ -3,7 +3,7 @@
     "username": "root",
     "password": "password",
     "database": "wooferdb",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {

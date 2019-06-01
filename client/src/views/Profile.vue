@@ -13,7 +13,7 @@
     <hr>
     <h3>Your Events</h3>
     <ul id="user-events">
-      <li v-for="items in EventFeed"></li>
+      <!-- <li v-for="items in EventFeed"></li> -->
     </ul>
     <div>
       <b-card no-body class="overflow-hidden" style="max-width: 100vw; max-height: 30vh;">
@@ -49,8 +49,9 @@
         </b-row>
       </b-card>
     </div>
-
-    <AddPetForm/>
+    <div class="mt-5">
+      <AddPetForm/>
+    </div>
   </div>
 </template>
 
