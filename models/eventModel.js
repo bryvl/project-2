@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     isDate: {
       type: DataTypes.BOOLEAN
     },
-    userLocation: {
+    eventLocation: {
       type: DataTypes.STRING
     },
     attendanceLimit: {

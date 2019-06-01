@@ -77,8 +77,6 @@ export default {
         console.log(err);
       })
       
-      
-
       this.signedIn = true;
     },
     signOut() {
