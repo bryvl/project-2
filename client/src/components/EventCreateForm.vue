@@ -45,6 +45,11 @@
         rows="3"
         max-rows="6"
       ></b-form-textarea>      
+      <b-form-textarea
+        class="mt-3"
+        id="textarea"
+        v-model="form.eventLocation"
+        placeholder="Where is this happening?"></b-form-textarea>      
       <!-- <b-form-file accept="image/jpeg, image/png" placeholder="No Image Chosen"></b-form-file> -->
       <!-- NOTE: Below button is not refreshing page anymore. I don't want that necessarily, but  -->
       <!-- that was the only way the feed was live updating. -->
@@ -104,7 +109,8 @@ export default {
         eventName: this.form.eventName,
         attendanceLimit: this.form.attendanceLimit,
         isDate: this.form.isDate,
-        eventDescription: this.form.eventDescription
+        eventDescription: this.form.eventDescription,
+        eventDescription: this.form.eventLocation,
       })
       .then(function(response){
         this.$emit('updatefeed', response.data);
@@ -122,6 +128,7 @@ export default {
       this.form.isDate = false
       // this.form.selectedPet = null
       this.form.eventDescription = ''
+      this.form.eventLocation = ''
       // Trick to reset/clear native browser form validation state
       this.show = false
       this.$nextTick(() => {
