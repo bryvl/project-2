@@ -60,6 +60,8 @@ export default {
       // console.log("Image URL: " + profile.getImageUrl());
       console.log("Email: " + profile.getEmail()); 
       // console.log("ID Token: " + id_token);
+
+      // Store Google User Info to local object
       this.gUser.gId = profile.getId();
       this.gUser.gName = profile.getName();
       this.gUser.gImage = profile.getImageUrl();
@@ -69,6 +71,9 @@ export default {
         name: this.gUser.gName,
         email: this.gUser.gEmail,
         profilePic: this.gUser.gImage
+      })
+      .then(function(response){
+        console.log(response.data);
       });
       
       this.signedIn = true;

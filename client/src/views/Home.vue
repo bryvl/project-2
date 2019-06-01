@@ -7,7 +7,6 @@
       Profile
     </div>
   </div>
-
 </template>
 
 <script>
