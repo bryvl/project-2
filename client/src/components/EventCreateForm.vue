@@ -102,7 +102,10 @@ export default {
   },
   methods: {
     addToFeed(playDate) {
-
+      if (this.form.isDate) {
+        this.form.isDate = true
+        console.log(this.form.isDate)
+      }
       console.log(JSON.stringify(this.form));
       axios.post('/api/events/', {
         userName: '',
