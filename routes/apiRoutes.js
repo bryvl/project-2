@@ -19,6 +19,8 @@ module.exports = function(router) {
       console.log(result);
     });
   });
+
+  //Get request for all events
   router.get("/api/events/", function(req, res) {
     db.Event.findAll()
     .then(function(eventData) {
@@ -60,7 +62,7 @@ module.exports = function(router) {
       });
   });
 
-  // app.get("/api/examples/:id", function(req, res) {
+  // router.get("/api/examples/:id", function(req, res) {
   //   db.Example.findOne({
   //     where: {
   //       id: req.params.id
@@ -73,7 +75,7 @@ module.exports = function(router) {
   // });
 
   // // Delete an example by id
-  // app.delete("/api/examples/:id", function(req, res) {
+  // router.delete("/api/examples/:id", function(req, res) {
   //   db.Example.destroy({ where: { id: req.params.id } }).then(
   //     function(dbExample) {
   //       res.json(dbExample);
@@ -81,4 +83,63 @@ module.exports = function(router) {
   //   );
   // });
 
+
+
+              //GET, POST, DELETE AND UPDATE on Pet Data
+
+    // GET route for getting all the pets
+    router.get("/api/pets/", function(req, res) {
+      db.Pet.findAll()
+      .then(function(petData) {
+        res.json(petData);
+      });
+    });
+  
+    // POST route for a saving a pet
+    router.post("/api/pets", function(req, res) {
+      console.log(req.body);
+    
+      db.Pet.create({
+        name: req.body.name,
+        age: req.body.age,
+        petBreed: req.body.petBreed,
+        petSex: req.body.petSex,
+        petInfo: req.body.petInfo
+        //UserId: 1
+      }).then(function(petData) {
+        
+        res.json(petData);
+      });
+    });
+  
+    //DELETE route for deleting a pet
+    router.delete("/api/pets/:id", function(req, res) {
+      // We just have to specify which pet we want to destroy with "where"
+      db.Pet.destroy({
+        where: {
+          id: req.params.id
+        }
+      }).then(function(dbTodo) {
+        res.json(petData);
+      });
+  
+    });
+  
+    // PUT route to update a pet
+    router.put("/api/pets/:id", function(req, res) {
+  
+      db.Pet.update({
+        name: req.body.name,
+        age: req.body.age,
+        petBreed: req.body.petBreed,
+        petSex: req.body.petSex,
+        petInfo: req.body.petInfo
+      }, {
+        where: {
+          id: req.params.id
+        }
+      }).then(function(petData) {
+        res.json(petData);
+      });
+    });
 };
