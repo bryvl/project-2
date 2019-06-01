@@ -27,12 +27,12 @@ export default {
         client_id:
           "50452222215-9ed386i1o1r9jmrptk8in5rnrbbcoh04.apps.googleusercontent.com"
       },
-      gUser: {
-        gId: "",
-        gName: "",
-        gImage: "",
-        gEmail: "",
-        gIdToken: ""
+      user: {
+        id: "",
+        name: "",
+        image: "",
+        email: "",
+        idToken: ""
       },
       signedIn: false
     };
@@ -60,17 +60,25 @@ export default {
       // console.log("Image URL: " + profile.getImageUrl());
       console.log("Email: " + profile.getEmail()); 
       // console.log("ID Token: " + id_token);
-      this.gUser.gId = profile.getId();
-      this.gUser.gName = profile.getName();
-      this.gUser.gImage = profile.getImageUrl();
-      this.gUser.gEmail = profile.getEmail();
-      this.gUser.gIdToken = id_token;
+      this.user.id = profile.getId();
+      this.user.name = profile.getName();
+      this.user.image = profile.getImageUrl();
+      this.user.email = profile.getEmail();
+      this.user.idToken = id_token;
       axios.post("/api/user/", {
-        name: this.gUser.gName,
-        email: this.gUser.gEmail,
-        profilePic: this.gUser.gImage
-      });
+        name: this.user.name,
+        email: this.user.email,
+        profilePic: this.user.image
+      })
+      .then(function(data) {
+        console.log(data);
+      })
+        .catch(function(err) {
+        console.log(err);
+      })
       
+      
+
       this.signedIn = true;
     },
     signOut() {
@@ -78,13 +86,14 @@ export default {
       auth2.signOut().then(function() {
         console.log("User signed out.");
       });
-      this.gUser.gId = "";
-      this.gUser.gName = "";
-      this.gUser.gImage = "";
-      this.gUser.gEmail = "";
-      this.gUser.gIdToken = "";
+      this.user.id = "";
+      this.user.name = "";
+      this.user.image = "";
+      this.user.email = "";
+      this.user.idToken = "";
       this.signedIn = false;
-    }
+    },
+    
   }
 };
 </script>
