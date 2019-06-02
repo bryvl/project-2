@@ -24,14 +24,12 @@
 
 <script>
 
-import GoogleMap from "@/components/GoogleMap";
+import GoogleMap from "@/components/GoogleMap.vue";
 import PlayDatePost from "@/components/PlayDatePost.vue"
 
-var eventName = "Event Name"
-
 export default {
-  name: "playdatepage",
-   props: {playDate: Object},
+  name: "Playdatepage",
+  props: {playDate: Object},
    components: {
      GoogleMap,
      PlayDatePost

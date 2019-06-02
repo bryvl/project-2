@@ -43,9 +43,10 @@ export default {
     gohome: function() {
       this.$router.push("/home");
     },
-    doLogin: function() {
-      localStorage.setItem("name", this.name);
-      localStorage.setItem("email", this.email);
+    doLogin: function(data) {
+      $router.push({name: 'profile', params: {data}});
+      // localStorage.setItem("name", this.name);
+      // localStorage.setItem("email", this.email);
     },
     onUserLoggedIn (googleUser) {
       console.log(googleUser);
