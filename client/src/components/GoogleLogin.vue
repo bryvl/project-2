@@ -70,7 +70,7 @@ export default {
         name: this.user.name,
         email: this.user.email,
         profilePic: this.user.image
-      }.bind(this))
+      })
       .then(function(data) {
         this.$emit('googleuser', data.data)
       })
