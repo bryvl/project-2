@@ -81,4 +81,8 @@ export default {
 	#titleHeader {
 		display: inline-block;
 	}
+#createEvent{
+    margin-left: 1%;
+    margin-bottom: 1%;
+}
 </style>
