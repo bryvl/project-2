@@ -13,7 +13,7 @@
 				</b-col>
 				<b-col md="2">
 					<b-button variant="outline-primary"><router-link :to="{name: 'Playdatepage', params: {playDate}}"><small>Go To</small></router-link></b-button>
-					<b-button variant="outline-primary" @click="attendIncrease"><small>Attend</small></b-button>
+					<b-button class="attend-btn" variant="outline-primary" @click="attendIncrease"><small>Attend</small></b-button>
 				</b-col>
 		</b-row>
 	</b-card>
@@ -56,4 +56,10 @@ export default {
 	b-card-text {
 		text-align: left;
 	}
+
+
+.attend-btn {
+    margin-top: 5%;
+}
+
 </style>
