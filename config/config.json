@@ -2,7 +2,7 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
+    "password": "password",
     "database": "wooferdb",
     "host": "localhost",
     "dialect": "mysql"
