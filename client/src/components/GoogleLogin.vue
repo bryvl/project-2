@@ -54,12 +54,8 @@ export default {
     currentUser(googleUser) {
       var profile = googleUser.getBasicProfile();
       var id_token = googleUser.getAuthResponse().id_token;
-      // console.log(googleUser);
-      // console.log("ID: " + profile.getId()); 
       console.log("Name: " + profile.getName());
-      // console.log("Image URL: " + profile.getImageUrl());
       console.log("Email: " + profile.getEmail()); 
-      // console.log("ID Token: " + id_token);
       this.user.id = profile.getId();
       this.user.name = profile.getName();
       this.user.image = profile.getImageUrl();
