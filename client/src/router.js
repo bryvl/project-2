@@ -38,8 +38,9 @@ export default new Router({
     },
      {
       path: '/playdatepage',
-      name: 'playdatedage',
-       component: Playdatepage
+      name: 'playdatepage',
+      component: playdatepage,
+      props: true
      }
   ]
 });

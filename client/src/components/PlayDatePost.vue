@@ -12,7 +12,7 @@
 					</b-card-body>
 				</b-col>
 				<b-col md="2">
-					<b-button variant="outline-primary" @click="goToEventPage(playDate.id)"><small>Go To</small></b-button>
+					<b-button variant="outline-primary"><router-link :to="{name: 'Playdatepage', params: {playDate}}"><small>Go To</small></router-link></b-button>
 					<b-button variant="outline-primary" @click="attendIncrease"><small>Attend</small></b-button>
 				</b-col>
 		</b-row>
@@ -36,7 +36,7 @@ export default {
 		},
 		goToEventPage: function(id){
 		console.log(id);
-			axios.get('/api/events/' + id)
+			axios.get('/api/events/playdatepage' + id)
 			.then(function(response) {
 				console.log(response.data);
 			}.bind(this))
