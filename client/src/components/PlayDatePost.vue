@@ -7,7 +7,7 @@
 			<b-col md="4">
 				<b-card-body :title="playDate.eventName">
 					<b-card-text>
-									DateId: {{playDate.id}} <br> Ppl Limit: {{playDate.attendanceLimit}} <br> Attending: {{playDate.attending}} <br> Date? {{playDate.isDate}}
+									DateId: {{playDate.id}} <br> Ppl Limit: {{playDate.attendanceLimit}} <br> Attending: {{playDate.attending}} <br> Date? {{playDate.isDate}} <br> Bitch, Where: {{playDate.eventLocation}}
 					</b-card-text>
 					</b-card-body>
 				</b-col>

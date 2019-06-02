@@ -43,24 +43,37 @@ module.exports = function(router) {
   
    // Checks to see if the user's email already exists in the db, if not then the user is added
   router.post("/api/user", function(req, res) {
-    db.User.count({ where: { email: req.body.email }})
-      .then(count => {
-        if (count != 0) {
-          return false;
-        }
-        db.User.create({
-          name: req.body.name,
-          email: req.body.email,
-          password: req.body.password,
-          profilePic: req.body.profilePic,
-          description: req.body.description,
-          singleReadyMingle: req.body.singleReadyMingle,
-          }).then(
-          function(userData) {
-            res.json(userData);
-          });
-      });
+    db.User
+  .findOrCreate({where: {email: req.body.email}, defaults: {name: req.body.name, profilePic: req.body.profilePic}})
+    .then(([user, created]) => {
+    console.log(user.get({
+      plain: true
+    }))
+    console.log(created)
+    res.json(user)
+
+  })
+    
   });
+
+    // db.User.count({ where: { email: req.body.email }})
+    //   .then(count => {
+    //     if (count != 0) {
+    //       return false;
+    //     }
+    //     db.User.create({
+    //       name: req.body.name,
+    //       email: req.body.email,
+    //       password: req.body.password,
+    //       profilePic: req.body.profilePic,
+    //       description: req.body.description,
+    //       singleReadyMingle: req.body.singleReadyMingle,
+    //       }).then(
+    //       function(userData) {
+    //         res.json(userData);
+    //       });
+    //   });
+  // });
 
   // router.get("/api/examples/:id", function(req, res) {
   //   db.Example.findOne({

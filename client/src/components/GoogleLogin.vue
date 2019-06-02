@@ -65,19 +65,21 @@ export default {
       this.user.image = profile.getImageUrl();
       this.user.email = profile.getEmail();
       this.user.idToken = id_token;
+      
       axios.post("/api/user/", {
         name: this.user.name,
         email: this.user.email,
         profilePic: this.user.image
-      })
+      }.bind(this))
       .then(function(data) {
-        console.log(data);
+        this.$emit('googleuser', data.data)
       })
-        .catch(function(err) {
+      .catch(function(err) {
         console.log(err);
       })
       
       this.signedIn = true;
+      this.$router.push('home')
     },
     signOut() {
       var auth2 = gapi.auth2.getAuthInstance();

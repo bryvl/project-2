@@ -2,7 +2,7 @@
   <div class="login">
     <Carousel/>
     <GoogleLogin/>
-    <form @submit.prevent="doLogin">
+    <!-- <form @submit.prevent="doLogin">
       <p>
         <label for="name-input">
           <span>User Name: </span>
@@ -19,7 +19,7 @@
           <router-link to="/signup">here</router-link>
         </div>
       <button @click="gohome" type="submit">Login</button>
-    </form>
+    </form> -->
   </div>
 </template>
 
@@ -43,9 +43,10 @@ export default {
     gohome: function() {
       this.$router.push("/home");
     },
-    doLogin: function() {
-      localStorage.setItem("name", this.name);
-      localStorage.setItem("email", this.email);
+    doLogin: function(data) {
+      $router.push({name: 'profile', params: {data}});
+      // localStorage.setItem("name", this.name);
+      // localStorage.setItem("email", this.email);
     },
     onUserLoggedIn (googleUser) {
       console.log(googleUser);
