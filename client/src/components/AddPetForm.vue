@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div class="pet-form">
     <h3>Add your pet's information here!</h3>
     <b-form @submit.prevent="AddPetForm" @reset="onReset" v-if="show">
       <b-form-group
@@ -114,3 +114,12 @@ import axios from 'axios'
     }
   }
 </script>
+
+<style>
+.pet-form {
+width:50%;
+margin: 0px auto;
+}
+
+
+</style>

@@ -38,7 +38,7 @@ export default new Router({
     },
      {
       path: '/playdatepage',
-      name: 'Playdatepage',
+      name: 'playdatepage',
       component: Playdatepage,
       props: true
      }
