@@ -1,5 +1,7 @@
 <template>
   <div class="app">
+    <h3> {{ formattedAddress }}  </h3>
+    <!-- <h3> {{playDate.eventDescription}}  </h3> -->
    <GmapMap
  v-bind:center="{lat: userLat, lng: userLng}"
   :zoom="15"
@@ -18,13 +20,15 @@
 
 </GmapMap>
 <!-- <div @mouseover="callGeocode()">MOUsEOVER</div> -->
-<h3> {{ formattedAddress }}  </h3>
+
 
 
 
   </div>
 </template>
 <script>
+import PlayDatePost from "@/components/PlayDatePost.vue"
+import EventPage from "@/views/Event.vue"
 
 const keys = require("../../../keys/keys.js");
 import main from '../main.js';
@@ -32,11 +36,20 @@ var axios = require ('axios');
 // var userLat;
 // var userLng;
 // console.log("will this lat work?" + maps.geocode());
-var location="Raleigh, NC"
-// console.log(.youThere);
+var location= "Raleigh, NC"
+console.log(location);
 export default {
     name: "GoogleMap",
+    props: {playDate: Object},
+  components: {
+    PlayDatePost,
+    EventPage
+  },
      data: function() {
+
+        // location = "Raleigh, NC";
+    // other object attributes
+  console.log("what we are aiming for:" + location)
       return {
       userLat: 0,
       userLng: 0,
@@ -44,8 +57,9 @@ export default {
       mapTypeId: "terrain",
       markers: [
       
-        { position: { lat:0 , lng:0  } }
+        { position: { lat: 0 , lng: 0  } }
       ]
+      
       
       
     };
@@ -55,18 +69,18 @@ export default {
       callGeocode() {
         console.log("callgeocode is being called")
     console.log("geocode is being called");
-    location = '1209 inlet place';
+    location = this.playDate.eventLocation;
    
     axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
         params: {
             address:location,
-            key: keys.googlemaps
+            key: 'AIzaSyDFRyu277w4V5p1mjxGseqqo1yRXqBRbBw'
         }
     })
     .then(function(response){
        //log response
    
-    
+    console.log(response)
     // formatted address
     console.log(response.data.results[0].formatted_address);
 
@@ -103,7 +117,6 @@ export default {
          this.markers[0].position.lng = this.userLng;
     },
     formattedAddress: function() {
-         this.markers[0].position.lng = this.userLng;
    this.formattedAddress = formattedAddress;
     }
 
