@@ -78,6 +78,7 @@ export default {
       })
       
       this.signedIn = true;
+      this.$router.push('home')
     },
     signOut() {
       var auth2 = gapi.auth2.getAuthInstance();

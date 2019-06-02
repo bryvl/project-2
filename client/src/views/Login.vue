@@ -2,7 +2,7 @@
   <div class="login">
     <Carousel/>
     <GoogleLogin/>
-    <form @submit.prevent="doLogin">
+    <!-- <form @submit.prevent="doLogin">
       <p>
         <label for="name-input">
           <span>User Name: </span>
@@ -19,7 +19,7 @@
           <router-link to="/signup">here</router-link>
         </div>
       <button @click="gohome" type="submit">Login</button>
-    </form>
+    </form> -->
   </div>
 </template>
 
