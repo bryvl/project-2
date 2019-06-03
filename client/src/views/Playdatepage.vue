@@ -1,6 +1,7 @@
 <template>
   <div>
   <h1 class="title">{{playDate.eventName}}</h1>
+  <h1 class="title">{{playDate.eventDate}}</h1>
   <h4></h4>
   <p class="event-description"> {{playDate.eventDescription}}</p>
   <GoogleMap :playDate="playDate"/>
@@ -23,12 +24,12 @@
 </template>
 
 <script>
-
+// Vue.use(require('vue-moment'));
 import GoogleMap from "@/components/GoogleMap.vue";
 import PlayDatePost from "@/components/PlayDatePost.vue"
 
 export default {
-  name: "Playdatepage",
+  name: "playdatepage",
   props: {playDate: Object},
    components: {
      GoogleMap,
