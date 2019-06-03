@@ -11,7 +11,7 @@
       @ok="handleOk"
       hide-footer="true"
     >
-      <form ref="form" @submit.stop.prevent="handleSubmit">
+      <b-form ref="form" @submit.stop.prevent="handleSubmit()">
         <b-form-group
           :state="nameState"
           label="Pet's Name:"
@@ -70,8 +70,16 @@
         </b-form-group>
       <b-button class="mt-3 mr-1" type="submit" variant="primary">Submit</b-button>
       <b-button class="mt-3" type="reset" variant="danger">Reset</b-button>
-
-      </form>
+      </b-form>
+      <b-card class="mt-3" header="Your Pet's Data:">
+        <pre class="m-0"> 
+          Name: {{ form.petName }}
+          Age: {{ form.petAge }}
+          Breed: {{ form.petBreed }}
+          Gender: {{ form.petSex }}
+          Extra Info: {{ form.petInfo }}
+        </pre>
+        </b-card>
     </b-modal>
   </div>
 </template>
@@ -89,7 +97,7 @@ export default {
         petSex: "",
         petInfo: ""
       },
-      sexes: [{ text: "Select One" }, "Male", "Female", "Do not want to say"],
+      sexes: [{ text: "Select One" }, "Male", "Female"],
       show: true
     };
   },
@@ -122,14 +130,19 @@ export default {
         return;
       }
       
+      var self = this
+      axios.get('api/user/' + this.form.userEmail)
+      .then(function(response){
+        var userId = response.data[0].id
+        console.log(userId)
       // Push the data to the db
-      axios
-        .post("/api/pets/", {
-          petName: this.form.petName,
-          petAge: this.form.petAge,
-          petBreed: this.form.petBreed,
-          petSex: this.form.petSex,
-          petInfo: this.form.petInfo
+      axios.post("/api/pets/", {
+          UserId: userId,
+          petName: self.form.petName,
+          petAge: self.form.petAge,
+          petBreed: self.form.petBreed,
+          petSex: self.form.petSex,
+          petInfo: self.form.petInfo
         })
         .then(
           function(response) {

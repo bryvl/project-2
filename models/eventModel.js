@@ -26,6 +26,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     eventDescription: {
       type: DataTypes.TEXT
+    },
+    UserId: {
+      type: DataTypes.INTEGER
     }
   },{
     freezeTableName: true
@@ -36,6 +39,7 @@ module.exports = function(sequelize, DataTypes) {
     Event.hasMany(models.UserEvent, {
       onDelete: "cascade"
     });
+    Event.belongsTo(models.User);
   };
   return Event;
 };

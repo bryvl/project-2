@@ -26,7 +26,6 @@ export default {
 	props: {playDate: Object},
 	data() {
 		return {
-			// goToEventPage(playDate.id)
 
 		}
 	},

@@ -1,8 +1,8 @@
 <template>
   <div>
   <h1 class="title">{{playDate.eventName}}</h1>
-  <h1 class="title">{{playDate.eventDate}}</h1>
-  <h4></h4>
+  <h5 class="event-date"> {{ playDate.eventDate | moment('timezone', 'America/New_York', 'dddd, MMMM Do, YYYY, h:mm:ss a') }}</h5>
+  <p class="from-now">{{ playDate.eventDate | moment("from", "now") }}</p>
   <p class="event-description"> {{playDate.eventDescription}}</p>
   <GoogleMap :playDate="playDate"/>
 
@@ -24,10 +24,11 @@
 </template>
 
 <script>
-// Vue.use(require('vue-moment'));
+
+import VueMoment from 'vue-moment'
 import GoogleMap from "@/components/GoogleMap.vue";
 import PlayDatePost from "@/components/PlayDatePost.vue"
-
+import main from '../main.js';
 export default {
   name: "playdatepage",
   props: {playDate: Object},
@@ -47,8 +48,12 @@ export default {
     return {
       status: "not_accepted"
     };
-  }
+  },
+  tellTime(time) {
+      console.log(this.$moment(time).format(' mm:ss'))
+    }
 }
+
 
 </script>
 
@@ -111,6 +116,10 @@ margin-top:1%;
 .event-description{
   width:50%;
   margin: 5px auto;
+}
+
+.from-now {
+  font-style:italic;
 }
 
 </style>

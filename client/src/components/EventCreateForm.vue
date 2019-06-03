@@ -26,27 +26,19 @@
           Events must have at least 2 people attending, including you
         </b-form-invalid-feedback>        
       </b-form-group>
-      <b-form-group id="input-group-3" label="Date:" label-for="date-3">
-        <b-form-input
-          :state="attendanceLimitState"
-          type="date"
-          id="input-3"
+
+      <b-formgroup>
+      
+      <datetime id="input-group-3" label="Date:" label-for="input-3"
+          type="datetime"
           v-model="form.eventDate"
           required
-          placeholder="When is the fun happening?"
-        ></b-form-input>       
-      </b-form-group>
-      <!-- <b-row class="my-1" v-for="thing in form.types" :key="thing"> -->
-        <!-- <b-col sm="3">
-          <label :for="`type-${thing}`">Event {{ thing }}:</label>
-        </b-col>
-    <b-col sm="5">-->
-    <!-- How do we connect a v-model to form.types.date and form.types.time?? -->
-    <!-- v-model="form.types[thing]" ????? -->
-    <!-- <b-form-input :id="`type-${thing}`" :type="thing"></b-form-input>
-        </b-col>
-      </b-row> -->
-      <!-- <b-form-select class="mt-3" v-model="form.selectedPet" :options="form.petOptions"></b-form-select> -->
+          use12-hour
+          placeholder="   Please specify date of play date">
+        </datetime>
+            
+      </b-formgroup>
+
       <b-form-textarea
         class="mt-3"
         id="textarea"
@@ -86,7 +78,7 @@ export default {
   data() {
     return {
       form: {
-        userName: '',
+        userEmail: '',
         eventName: '',
         attendanceLimit: '',
         isDate: false,
@@ -96,14 +88,14 @@ export default {
         //   'date',
         //   'time'
         // ],
-        // selectedPet: null,
-        // petOptions: [
-        //   // This pet options b-form-select should be generated based on the amount of pets the given user has
-        //   {value: null, text: 'Select a companion to join you!'},
-        //   {value: 'a', text: 'first user pet'},
-        //   {value: 'b', text: 'second user pet'},
-        //   {value: 'c', text: 'third user pet'}
-        // ],
+        selectedPet: null,
+        petOptions: [
+          // This pet options b-form-select should be generated based on the amount of pets the given user has
+          {value: null, text: 'Select a companion to join you!'},
+          {value: 'a', text: 'first user pet'},
+          {value: 'b', text: 'second user pet'},
+          {value: 'c', text: 'third user pet'}
+        ],
         eventDescription: ""
       },
       domain: "",
@@ -115,24 +107,30 @@ export default {
       if(this.form.isDate) {
         this.form.isDate = true;
       }
-      console.log(JSON.stringify(this.form));
+      this.form.userEmail = localStorage.getItem('email')
 
-      axios.post('/api/events/', {
-        userName: '',
-        eventName: this.form.eventName,
-        attendanceLimit: this.form.attendanceLimit,
-        isDate: this.form.isDate,
-        eventDescription: this.form.eventDescription,
-        eventLocation: this.form.eventLocation,
-        eventDate: this.form.eventDate
-      })
+      console.log("Form", JSON.stringify(this.form));
+      var self = this
+      axios.get('api/user/' + this.form.userEmail)
       .then(function(response){
-        this.$emit('updatefeed', response.data);
-        console.log("This is data: " + JSON.stringify(response.data));
-
-      }.bind(this))
-      .catch(function(err){
-        console.log(err);
+        var userId = response.data[0].id
+        console.log(userId)
+        axios.post('/api/events/', {
+          UserId: userId,
+          eventName: self.form.eventName,
+          attendanceLimit: self.form.attendanceLimit,
+          isDate: self.form.isDate,
+          eventDescription: self.form.eventDescription,
+          eventLocation: self.form.eventLocation,
+          eventDate: this.form.eventDate
+        })
+        .then(function(response){
+          self.$emit('updatefeed', response.data);
+          console.log("This is data: " + JSON.stringify(response.data));
+        })
+        .catch(function(err){
+          console.log(err);
+        })
       })
     },
     onReset(evt) {
@@ -154,3 +152,16 @@ export default {
   }
 };
 </script>
+
+<style>
+input.vdatetime-input {
+    width: 100%;
+}
+
+.vdatetime-popup__header {
+    padding: 18px 30px;
+    background: #C64242;
+    color: #fff;
+    font-size: 32px;
+}
+</style>

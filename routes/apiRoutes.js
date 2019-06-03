@@ -3,24 +3,30 @@ var express = require('express');
 var router = express.Router();
 
 module.exports = function(router) {
-	// Get all examples
+	// Post to Event table and then create an instance of a UserEvent model based on this event's id and user's id and hopefully pet's id next
 	router.post('/api/events/', function(req, res) {
 		db.Event
+		.create({
+			UserId: req.body.UserId,
+			userEmail: req.body.userEmail,
+			eventName: req.body.eventName,
+			attendanceLimit: req.body.attendanceLimit,
+			attending: 0,
+			isDate: req.body.isDate,
+			eventDescription: req.body.eventDescription,
+			eventLocation: req.body.eventLocation,
+			eventDate: req.body. eventDate 
+		})
+		.then(function(result) {
+			res.json(result);
+			console.log(result);
+			db.UserEvent
 			.create({
-				userName: req.body.userName,
-				eventName: req.body.eventName,
-				attendanceLimit: req.body.attendanceLimit,
-        attending: 0,
-        eventDate:req.body.eventDate,
-				isDate: req.body.isDate,
-				eventDescription: req.body.eventDescription,
-				eventLocation: req.body.eventLocation
+				EventId: result.id,
+				UserId: result.UserId
 			})
-			.then(function(result) {
-				res.json(result);
-				// {id: result.insertId}
-				console.log(result);
-			});
+		});
+		
 	});
 
 	//Get request for all events
