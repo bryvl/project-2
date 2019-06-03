@@ -34,6 +34,7 @@
           v-model="form.eventDate"
           required
           use12-hour
+          :minute-step="15"
           placeholder="   When is this happening?">
         </datetime>
             
