@@ -2,7 +2,7 @@
 	<b-card no-body class="overflow-hidden" style="max-width: 540px;">
 		<b-row no-gutters>
 			<b-col md="6">
-				<b-card-img src="https://picsum.photos/150/150?random=10" height="150" class="rounded-0"></b-card-img>
+				<b-card-img src="https://placedog.net/150/200" height="300" class="rounded-0"></b-card-img>
 			</b-col>
 			<b-col md="4">
 				<b-card-body :title="playDate.eventName">

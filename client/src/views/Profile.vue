@@ -57,7 +57,6 @@
 </template>
 
 <script>
-import ProfileStyle from "../../public/profilestyle.scss";
 import CreateAboutUser from "@/components/CreateAboutUser.vue";
 import EventFeed from "@/components/EventFeed.vue";
 import AddPetForm from "@/components/AddPetForm.vue";
@@ -65,7 +64,6 @@ import axios from "axios";
 export default {
   name: "Profile",
   components: {
-    ProfileStyle,
     CreateAboutUser,
     EventFeed,
     AddPetForm
@@ -102,7 +100,51 @@ export default {
 };
 </script>
 
-<style>
+<style lang='scss' scoped>
+  $colors: (
+    white-ish: #f4f4f4,
+    red-ish: #C64242,
+    pink-ish: #FF7474,
+    black: #000
+  );
+  @function color($color-name) {
+    @return map-get($colors, $color-name);
+  };
+
+  $queries: (
+    phone: "only screen and (max-width : 425px)",
+    tablet: "only screen and (max-width : 768px)",
+    computer: "only screen and (max-width : 1440px)",
+    4k:  "only screen and (min-width : 2559px)"
+  );
+  @function responsive($query-size) {
+      @return map-get($queries, $query-size);
+  };
+
+  .jumbotron {
+    margin: 0 auto;
+    position: relative;
+    background-color: color(pink-ish);
+  }
+  img {
+    border-radius: 50%;
+  }
+  #user-info {
+    color: color(white-ish);
+    text-shadow: color(red-ish) 2px 2px 5px;
+  }
+  .btn {
+    border: 3px solid color(white-ish);
+    color: color(white-ish);
+    font-weight: bold;
+  }
+  .btn:hover {
+    border: 3px solid color(pink-ish);
+    color: color(pink-ish);
+    background-color: color(white-ish);
+    text-shadow: color(pink-ish) 1.2px 1.2px 15px;
+  }
+
 footer {
   position: fixed;
   bottom: 0;
