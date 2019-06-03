@@ -12,7 +12,7 @@
 						<strong> Date?</strong> {{playDate.isDate}} <br> 
 						<strong> Where: </strong> {{playDate.eventLocation}} <br> 
 						<strong> When: </strong> <br>
-						{{playDate.eventDate | moment('timezone', 'America/New_York', 'dddd, MMMM Do, YYYY, h:mm:ss a')}}
+						{{playDate.eventDate | moment('timezone', 'America/New_York', 'dddd, MMMM Do, YYYY, h:mm')}}
 					</b-card-text>
 					</b-card-body>
 				</b-col>
