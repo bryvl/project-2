@@ -19,8 +19,23 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: 'Home',
+  mounted() {
+    let email = localStorage.getItem('email');
+    setTimeout(() => axios.get("/api/user/" + email, function(response) {
+      })
+      .then(function(response) {
+        console.log(response);
+        localStorage.setItem('image', response.data[0].profilePic)
+        localStorage.setItem('id', response.data[0].id)
+        localStorage.setItem('description', response.data[0].description)
+        localStorage.setItem('singleReadyMingle', response.data[0].singleReadyMingle)
+      }).catch(function(err) {
+        console.log(err);
+      }), 2000)
+  },
   methods: {
     goeventpage: function() {
       this.$router.push("/eventpage");

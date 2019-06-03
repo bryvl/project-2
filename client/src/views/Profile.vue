@@ -1,8 +1,8 @@
 <template>
   <div class="profile">
     <b-jumbotron>
-      <img src="https://placedog.net/150/150">
-      <h1 id="user-info">(User name goes here)</h1>
+      <img :src="user.image"/>
+      <h1 id="user-info">{{ user.name }}</h1>
       <b-button id="createInfo" variant="outline-primary" @click="createInfo">Update Your Info</b-button>
     </b-jumbotron>
     <b-container>
@@ -68,6 +68,14 @@ export default {
     EventFeed,
     AddPetForm
   },
+  mounted() {
+    this.user.name = window.localStorage.getItem('name')
+    this.user.email = window.localStorage.getItem('email')
+    this.user.image = window.localStorage.getItem('image')
+    this.user.id = window.localStorage.getItem('id')
+    this.user.description = window.localStorage.getItem('description')
+    this.user.singleReadyMingle = window.localStorage.getItem('singleReadyMingle')
+  },
   methods: {
     createInfo: function() {
       this.$refs["create-info"].show();
@@ -81,7 +89,12 @@ export default {
   },
   data() {
     return {
-      status: "not_accepted"
+      status: "not_accepted",
+      user: {
+        name: '',
+        email: '',
+        image: ''
+      }
     };
   }
 };

@@ -60,24 +60,24 @@ module.exports = function(router) {
 			});
 	});
 
-	// db.User.count({ where: { email: req.body.email }})
-	//   .then(count => {
-	//     if (count != 0) {
-	//       return false;
-	//     }
-	//     db.User.create({
-	//       name: req.body.name,
-	//       email: req.body.email,
-	//       password: req.body.password,
-	//       profilePic: req.body.profilePic,
-	//       description: req.body.description,
-	//       singleReadyMingle: req.body.singleReadyMingle,
-	//       }).then(
-	//       function(userData) {
-	//         res.json(userData);
-	//       });
-	//   });
-	// });
+	// Find user by email
+	router.get("/api/user/:email", function(req, res) {
+		db.User.findAll({
+		  where: {
+			email: req.params.email
+		  }
+		})
+		  .then(function(response) {
+			res.json(response);
+		  });
+	});
+
+	//Get request for all users
+	router.get('/api/users/', function(req, res) {
+		db.User.findAll().then(function(userData) {
+			res.json(userData);
+		});
+	});
 
 	// router.get("/api/examples/:id", function(req, res) {
 	//   db.Example.findOne({

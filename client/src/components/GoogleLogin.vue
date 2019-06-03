@@ -28,8 +28,8 @@ export default {
         id: "",
         name: "",
         image: "",
-        email: "",
-        idToken: ""
+        description: "",
+        singleReadyMingle: false
       },
       signedIn: false
     };
@@ -50,14 +50,13 @@ export default {
   methods: {
     currentUser(googleUser) {
       var profile = googleUser.getBasicProfile();
-      var id_token = googleUser.getAuthResponse().id_token;
+      var email = profile.getEmail();
+      var emailString = "email" + email;
       console.log("Name: " + profile.getName());
       console.log("Email: " + profile.getEmail()); 
-      this.user.id = profile.getId();
       this.user.name = profile.getName();
       this.user.image = profile.getImageUrl();
       this.user.email = profile.getEmail();
-      this.user.idToken = id_token;
       localStorage.setItem('email', this.user.email)
       localStorage.setItem('name', this.user.name)
       axios.post("/api/user/", {
@@ -74,8 +73,6 @@ export default {
       this.signedIn = true;
       this.$router.push('home')
     }
-    
-    
   }
 };
 </script>
