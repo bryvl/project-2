@@ -6,7 +6,7 @@
       <b-button id="createInfo" variant="outline-primary" @click="createInfo">Update Your Info</b-button>
     </b-jumbotron>
     <b-container>
-      <b-modal ref="create-info" hide-footer title="Create Info">
+      <b-modal ref="create-info" hide-footer title="Update Profile">
         <CreateAboutUser></CreateAboutUser>
       </b-modal>
     </b-container>
