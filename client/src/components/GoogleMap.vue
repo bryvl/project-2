@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <h3> {{ formattedAddress }}  </h3>
+    <h4> {{ formattedAddress }}  </h4>
     <!-- <h3> {{playDate.eventDescription}}  </h3> -->
    <GmapMap
  v-bind:center="{lat: userLat, lng: userLng}"

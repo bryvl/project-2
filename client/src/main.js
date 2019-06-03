@@ -5,6 +5,19 @@ import 'bootstrap';
 import 'popper.js';
 import 'vue2-google-maps';
 import BootstrapVue from 'bootstrap-vue';
+import 'moment-timezone';
+import moment from 'moment-timezone';
+import VueMoment from 'vue-moment';
+
+import Datetime from 'vue-datetime'
+// You need a specific loader for CSS files
+import 'vue-datetime/dist/vue-datetime.css'
+
+Vue.use(Datetime)
+
+Vue.use(VueMoment, {
+  moment,
+})
 
 import * as VueGoogleMaps from 'vue2-google-maps'
 

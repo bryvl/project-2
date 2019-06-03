@@ -18,9 +18,9 @@ module.exports = function(sequelize, DataTypes) {
     attending: {
       type: DataTypes.INTEGER
     },
-    // dateTime: {
-    //   type: DataTypes.STRING
-    // },
+    eventDate: {
+      type: DataTypes.DATE
+    },
     userPet: {
       type: DataTypes.STRING
     },
