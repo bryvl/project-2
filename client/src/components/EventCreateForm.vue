@@ -27,17 +27,17 @@
         </b-form-invalid-feedback>        
       </b-form-group>
 
-      <b-formgroup>
+      <b-form-group>
       
       <datetime id="input-group-3" label="Date:" label-for="input-3"
           type="datetime"
           v-model="form.eventDate"
           required
           use12-hour
-          placeholder="   Please specify date of play date">
+          placeholder="   When is this happening?">
         </datetime>
             
-      </b-formgroup>
+      </b-form-group>
 
       <b-form-textarea
         class="mt-3"
@@ -45,10 +45,12 @@
         v-model="form.eventDescription"
         placeholder="Describe your playdate..."
         rows="3"
+        required
         max-rows="6"
       ></b-form-textarea>      
       <b-form-textarea
         class="mt-3"
+        required
         id="textarea"
         v-model="form.eventLocation"
         placeholder="Where is this happening?"></b-form-textarea>      
@@ -122,7 +124,7 @@ export default {
           isDate: self.form.isDate,
           eventDescription: self.form.eventDescription,
           eventLocation: self.form.eventLocation,
-          eventDate: this.form.eventDate
+          eventDate: self.form.eventDate
         })
         .then(function(response){
           self.$emit('updatefeed', response.data);
