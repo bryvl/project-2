@@ -34,7 +34,7 @@
           v-model="form.eventDate"
           required
           use12-hour
-          placeholder="   Please specify date of play date">
+          placeholder="   When is this happening?">
         </datetime>
             
       </b-form-group>
@@ -45,10 +45,12 @@
         v-model="form.eventDescription"
         placeholder="Describe your playdate..."
         rows="3"
+        required
         max-rows="6"
       ></b-form-textarea>      
       <b-form-textarea
         class="mt-3"
+        required
         id="textarea"
         v-model="form.eventLocation"
         placeholder="Where is this happening?"></b-form-textarea>      
@@ -121,7 +123,7 @@ export default {
           eventDescription: self.form.eventDescription,
           eventLocation: self.form.eventLocation,
           eventDate: self.form.eventDate
-        }.bind(self))
+        })
         .then(function(response){
           self.$emit('updatefeed', response.data);
           console.log("This is data: " + JSON.stringify(response.data));

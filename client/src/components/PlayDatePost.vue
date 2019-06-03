@@ -1,10 +1,10 @@
 <template>
-	<b-card no-body class="overflow-hidden" style="max-width: 540px;">
-		<b-row no-gutters>
-			<b-col md="6">
-				<b-card-img src="https://placedog.net/150/200" height="300" class="rounded-0"></b-card-img>
+	<b-card no-body class="overflow-hidden">
+		<b-row no-gutters sm="12">
+			<b-col md="6" sm="12">
+				<b-card-img thumnbail src="https://placedog.net/150/200" height="300" class="rounded-0"></b-card-img>
 			</b-col>
-			<b-col md="4">
+			<b-col md="4" sm="12">
 				<b-card-body :title="playDate.eventName">
 					<b-card-text>
 						<strong>Ppl Limit:</strong> {{playDate.attendanceLimit}} <br> 
@@ -62,8 +62,17 @@ export default {
 	}
 
 
-.attend-btn {
-    margin-top: 5%;
+
+.no-gutters {
+	margin:0px auto;
 }
 
+.card.overflow-hidden {
+    margin-bottom: 5%;
+	box-shadow: 5px 10px 8px #888888;
+}
+
+img {
+	max-width:50%;
+}
 </style>
