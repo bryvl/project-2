@@ -91,7 +91,7 @@ export default {
     grid-area: login;
     position: absolute;
     bottom: 50%;
-    right: 100px;
+    right: 40%;
   }
   .landing-text {
     grid-area: text;
@@ -99,9 +99,10 @@ export default {
     color: color(white-ish);
     z-index: 2;
     position: absolute;
-    top: 30%;
-    left: 100px;
+    top: 25%;
+    left: 25%;
     text-shadow: color(black) 2px 2px 7px;
+    width:50%
   }
   #good-boys {
     min-width: 100%;
@@ -155,4 +156,6 @@ export default {
  .abcRioButton.abcRioButtonBlue {
     box-shadow: 5px 8px 8px #5d4e4e;
 }
+
+
 </style>
