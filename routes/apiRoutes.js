@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 
 module.exports = function(router) {
-	// Get all examples
+	// Post to Event table and then create an instance of a UserEvent model based on this event's id and user's id and hopefully pet's id next
 	router.post('/api/events/', function(req, res) {
 		db.Event
 		.create({
@@ -14,7 +14,8 @@ module.exports = function(router) {
 			attending: 0,
 			isDate: req.body.isDate,
 			eventDescription: req.body.eventDescription,
-			eventLocation: req.body.eventLocation
+			eventLocation: req.body.eventLocation,
+			eventDate: req.body. eventDate 
 		})
 		.then(function(result) {
 			res.json(result);

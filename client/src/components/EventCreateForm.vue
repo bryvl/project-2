@@ -88,14 +88,14 @@ export default {
         //   'date',
         //   'time'
         // ],
-        // selectedPet: null,
-        // petOptions: [
-        //   // This pet options b-form-select should be generated based on the amount of pets the given user has
-        //   {value: null, text: 'Select a companion to join you!'},
-        //   {value: 'a', text: 'first user pet'},
-        //   {value: 'b', text: 'second user pet'},
-        //   {value: 'c', text: 'third user pet'}
-        // ],
+        selectedPet: null,
+        petOptions: [
+          // This pet options b-form-select should be generated based on the amount of pets the given user has
+          {value: null, text: 'Select a companion to join you!'},
+          {value: 'a', text: 'first user pet'},
+          {value: 'b', text: 'second user pet'},
+          {value: 'c', text: 'third user pet'}
+        ],
         eventDescription: ""
       },
       domain: "",
