@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="g-login">
     <div
       class="g-signin2"
       id="g-signin2"
