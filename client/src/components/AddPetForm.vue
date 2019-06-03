@@ -135,29 +135,28 @@ export default {
       .then(function(response){
         var userId = response.data[0].id
         console.log(userId)
-      // Push the data to the db
-      axios.post("/api/pets/", {
-          UserId: userId,
-          petName: self.form.petName,
-          petAge: self.form.petAge,
-          petBreed: self.form.petBreed,
-          petSex: self.form.petSex,
-          petInfo: self.form.petInfo
+        // Push the data to the db
+        axios.post("/api/pets/", {
+            UserId: userId,
+            petName: self.form.petName,
+            petAge: self.form.petAge,
+            petBreed: self.form.petBreed,
+            petSex: self.form.petSex,
+            petInfo: self.form.petInfo
         })
-        .then(
-          function(response) {
-            console.log("This is data: " + JSON.stringify(response.data));
-          }.bind(this)
-        )
+        .then(function(response) {
+          console.log("This is data: " + JSON.stringify(response.data));
+        })
         .catch(function(err) {
           console.log(err);
         });
 
-      //Hide the modal manually
-      this.$nextTick(() => {
-        this.$refs.modal.hide();
-      });
+        //Hide the modal manually
+        this.$nextTick(() => {
+          this.$refs.modal.hide();
+        });
+      })
     }
   }
-};
+}
 </script>
