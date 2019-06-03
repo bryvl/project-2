@@ -122,12 +122,12 @@ module.exports = function(router) {
 
 		db.Pet
 			.create({
+				UserId: req.body.UserId,
 				petName: req.body.petName,
 				petAge: req.body.petAge,
 				petBreed: req.body.petBreed,
 				petSex: req.body.petSex,
 				petInfo: req.body.petInfo
-				//UserId: 1
 			})
 			.then(function(petData) {
 				res.json(petData);
