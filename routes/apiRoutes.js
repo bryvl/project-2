@@ -39,14 +39,14 @@ module.exports = function(router) {
 	// Get request for specific event page
 	router.get('/api/events/:id', function(req, res) {
 		db.Event
-			.findOne({
-				where: {
-					id: req.params.id
-				}
-			})
-			.then(function(response) {
-				res.json(response);
-			});
+		.findOne({
+			where: {
+				id: req.params.id
+			}
+		})
+		.then(function(response) {
+			res.json(response);
+		});
 	});
 
 	// Checks to see if the user's email already exists in the db, if not then the user is added

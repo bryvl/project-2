@@ -1,6 +1,7 @@
 <template>
   <div>
   <h1 class="title">{{playDate.eventName}}</h1>
+  <h3> Hosted by :</h3>
   <h5 class="event-date"> {{ playDate.eventDate | moment('timezone', 'America/New_York', 'dddd, MMMM Do, YYYY, h:mm:ss a') }}</h5>
   <p class="from-now">{{ playDate.eventDate | moment("from", "now") }}</p>
   <p class="event-description"> {{playDate.eventDescription}}</p>
@@ -42,22 +43,37 @@ export default {
     },
     goprofile: function() {
       this.$router.push("/profile");
+    },
+    getUser(){
+      axios.get('api/user/' + this.user.email)
+      .then(function(response){
+        console.log("response: ", response.data[0])
+
+        this.user.name = response.data[0].name
+        this.user.email = response.data[0].email
+        this.user.mingler = response.data[0].singleReadyMingle
+        this.user.profilePic = response.data[0].profilePic
+      })
     }
   },
    data() {
     return {
-      user: {},
+      user: {
+        id: '',
+        name: '',
+        email: '',
+        mingler: '',
+        profilePic: ''
+      },
       status: "not_accepted"
     };
   },
   tellTime(time) {
       console.log(this.$moment(time).format(' mm:ss'))
   },
-  created(){
-      // axios.get('api/user/' + playDate.UserId)
-      // .then(function(response){
-      //   console.log(response.data[0])
-      // })
+  mounted(){
+    this.user.email = localStorage.getItem('email')
+    this.getUser();
   }
 
 }

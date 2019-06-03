@@ -10,7 +10,7 @@
       </b-form-group>
       <b-form-group id="input-group-4">
         <b-form-checkbox-group v-model="form.isDate" id="checkboxes-4">
-          <b-form-checkbox value="isDate">Is this a Date? (or date-lite?)</b-form-checkbox>
+          <b-form-checkbox value="isDate">Is this a Date ;)?</b-form-checkbox>
         </b-form-checkbox-group>
       </b-form-group>
       <b-form-group id="input-group-2" label="Attendee Limit:" label-for="input-2">
