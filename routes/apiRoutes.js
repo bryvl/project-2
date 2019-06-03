@@ -7,7 +7,7 @@ module.exports = function(router) {
 	router.post('/api/events/', function(req, res) {
 		db.Event
 			.create({
-				userName: req.body.userName,
+				userEmail: req.body.userEmail,
 				eventName: req.body.eventName,
 				attendanceLimit: req.body.attendanceLimit,
 				attending: 0,
