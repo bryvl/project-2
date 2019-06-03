@@ -77,6 +77,7 @@ export default {
   data() {
     return {
       form: {
+        userId: '',
         userEmail: '',
         eventName: '',
         attendanceLimit: '',
@@ -107,30 +108,38 @@ export default {
       if(this.form.isDate) {
         this.form.isDate = true;
       }
-      this.form.userEmail = localStorage.getItem('email')
 
       console.log("Form", JSON.stringify(this.form));
+      
       var self = this
-      axios.get('api/user/' + this.form.userEmail)
+      this.form.userEmail = localStorage.getItem('email')
+      this.getUser(this.form.email);
+      
+      axios.post('/api/events/', {
+        UserId: self.userId,
+        eventName: self.form.eventName,
+        attendanceLimit: self.form.attendanceLimit,
+        isDate: self.form.isDate,
+        eventDescription: self.form.eventDescription,
+        eventLocation: self.form.eventLocation,
+        eventDate: self.form.eventDate
+      })
       .then(function(response){
-        var userId = response.data[0].id
+        self.$emit('updatefeed', response.data);
+        console.log("This is data: " + JSON.stringify(response.data));
+      })
+      .catch(function(err){
+        console.log(err);
+      })
+    },
+    getUser(email){
+      axios.get('api/user/' + email)
+      .then(function(response){
+        self.userId = response.data[0].id
         console.log(userId)
-        axios.post('/api/events/', {
-          UserId: userId,
-          eventName: self.form.eventName,
-          attendanceLimit: self.form.attendanceLimit,
-          isDate: self.form.isDate,
-          eventDescription: self.form.eventDescription,
-          eventLocation: self.form.eventLocation,
-          eventDate: self.form.eventDate
-        })
-        .then(function(response){
-          self.$emit('updatefeed', response.data);
-          console.log("This is data: " + JSON.stringify(response.data));
-        })
-        .catch(function(err){
-          console.log(err);
-        })
+      })
+      .catch(function(err){
+        console.log(err);
       })
     },
     onReset(evt) {

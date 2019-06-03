@@ -41,7 +41,7 @@ export default {
 			}
 			this.playDate.attending++;
 		},
-		goToEventPage: function(id){
+		goToEventPage: function(){
 		
 		// console.log(id);
 		// 	axios.get('/api/events/:id')
