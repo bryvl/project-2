@@ -7,6 +7,7 @@ import 'vue2-google-maps';
 import BootstrapVue from 'bootstrap-vue';
 
 import * as VueGoogleMaps from 'vue2-google-maps'
+
 var keys = require("../../keys/keys.js");
 
 
