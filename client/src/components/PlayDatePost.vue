@@ -63,10 +63,6 @@ export default {
 
 
 
-.no-gutters {
-	margin:0px auto;
-}
-
 .card.overflow-hidden {
     margin-bottom: 5%;
 	box-shadow: 5px 10px 8px #888888;
