@@ -50,22 +50,9 @@
       </b-card>
     </div>
     <div class="mt-5">
-      
-      <h3>Your Pets</h3>
-      <hr>
-      <h5>If you do not have a pet data stored, you can do so here.</h5>
+      If you do not have a pet data stored, you can do so here.
       <AddPetForm/>
     </div>
-    <!-- <div>
-      <b-col md="4">
-				<b-card-body "Pet Name: ">
-					<b-card-text>
-									<h5> {{this.form.petName}} </h5>
-                  DateId: {{playDate.id}} <br> Ppl Limit: {{playDate.attendanceLimit}} <br> Attending: {{playDate.attending}} <br> Date? {{playDate.isDate}} <br> Bitch, Where: {{playDate.eventLocation}}
-					</b-card-text>
-					</b-card-body>
-				</b-col>
-    </div> -->
   </div>
 </template>
 

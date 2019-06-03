@@ -11,7 +11,7 @@
       @ok="handleOk"
       hide-footer="true"
     >
-      <b-form ref="form" @submit.stop.prevent="handleSubmit()">
+      <form ref="form" @submit.stop.prevent="handleSubmit">
         <b-form-group
           :state="nameState"
           label="Pet's Name:"
@@ -70,16 +70,8 @@
         </b-form-group>
       <b-button class="mt-3 mr-1" type="submit" variant="primary">Submit</b-button>
       <b-button class="mt-3" type="reset" variant="danger">Reset</b-button>
-      </b-form>
-      <b-card class="mt-3" header="Your Pet's Data:">
-        <pre class="m-0"> 
-          Name: {{ form.petName }}
-          Age: {{ form.petAge }}
-          Breed: {{ form.petBreed }}
-          Gender: {{ form.petSex }}
-          Extra Info: {{ form.petInfo }}
-        </pre>
-        </b-card>
+
+      </form>
     </b-modal>
   </div>
 </template>
