@@ -78,7 +78,7 @@ export default {
   data() {
     return {
       form: {
-        userName: '',
+        userEmail: '',
         eventName: '',
         attendanceLimit: '',
         isDate: false,
@@ -88,14 +88,14 @@ export default {
         //   'date',
         //   'time'
         // ],
-        // selectedPet: null,
-        // petOptions: [
-        //   // This pet options b-form-select should be generated based on the amount of pets the given user has
-        //   {value: null, text: 'Select a companion to join you!'},
-        //   {value: 'a', text: 'first user pet'},
-        //   {value: 'b', text: 'second user pet'},
-        //   {value: 'c', text: 'third user pet'}
-        // ],
+        selectedPet: null,
+        petOptions: [
+          // This pet options b-form-select should be generated based on the amount of pets the given user has
+          {value: null, text: 'Select a companion to join you!'},
+          {value: 'a', text: 'first user pet'},
+          {value: 'b', text: 'second user pet'},
+          {value: 'c', text: 'third user pet'}
+        ],
         eventDescription: ""
       },
       domain: "",
@@ -107,24 +107,30 @@ export default {
       if(this.form.isDate) {
         this.form.isDate = true;
       }
-      console.log(JSON.stringify(this.form));
+      this.form.userEmail = localStorage.getItem('email')
 
-      axios.post('/api/events/', {
-        userName: '',
-        eventName: this.form.eventName,
-        attendanceLimit: this.form.attendanceLimit,
-        isDate: this.form.isDate,
-        eventDescription: this.form.eventDescription,
-        eventLocation: this.form.eventLocation,
-        eventDate: this.form.eventDate
-      })
+      console.log("Form", JSON.stringify(this.form));
+      var self = this
+      axios.get('api/user/' + this.form.userEmail)
       .then(function(response){
-        this.$emit('updatefeed', response.data);
-        console.log("This is data: " + JSON.stringify(response.data));
-
-      }.bind(this))
-      .catch(function(err){
-        console.log(err);
+        var userId = response.data[0].id
+        console.log(userId)
+        axios.post('/api/events/', {
+          UserId: userId,
+          eventName: self.form.eventName,
+          attendanceLimit: self.form.attendanceLimit,
+          isDate: self.form.isDate,
+          eventDescription: self.form.eventDescription,
+          eventLocation: self.form.eventLocation,
+          eventDate: this.form.eventDate
+        })
+        .then(function(response){
+          self.$emit('updatefeed', response.data);
+          console.log("This is data: " + JSON.stringify(response.data));
+        })
+        .catch(function(err){
+          console.log(err);
+        })
       })
     },
     onReset(evt) {

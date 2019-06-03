@@ -7,8 +7,8 @@ module.exports = function(sequelize, DataTypes) {
     UserEvent.associate = function(models) {
   
     UserEvent.belongsTo(models.User);
-
     UserEvent.belongsTo(models.Event);
+    UserEvent.belongsTo(models.Pet);
   };
   
     return UserEvent;
