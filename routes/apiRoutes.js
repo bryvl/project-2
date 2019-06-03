@@ -49,7 +49,7 @@ module.exports = function(router) {
 		});
 	});
 
-	// Checks to see if the user's email already exists in the db, if not then the user is added
+	// On Login, checks to see if the user's email already exists in the db, if not then the user is added
 	router.post('/api/user', function(req, res) {
 		db.User
 			.findOrCreate({
@@ -95,6 +95,25 @@ module.exports = function(router) {
 		db.User.findAll().then(function(userData) {
 			res.json(userData);
 		});
+	});
+
+	//Put request to update user info
+	router.put('/api/user/:email', function(req, res) {
+		db.User.update(
+				{
+					profilePic: req.body.profilePic,
+					description: req.body.description,
+					singleReadyMingle: req.body.singleReadyMingle,
+				},
+				{
+					where: {
+						email: req.params.email
+					}
+				}
+			)
+			.then(function(response) {
+				res.json(response);
+			});
 	});
 
 	// router.get("/api/examples/:id", function(req, res) {
