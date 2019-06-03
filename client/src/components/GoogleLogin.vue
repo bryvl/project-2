@@ -10,9 +10,6 @@
       data-width="300"
       data-height="50"
     >Login</div>
-    <div v-show="signedIn">
-      <button id="g-signout" @click="signOut">Logout of Google</button>
-    </div>
   </div>
 </template>
 
@@ -54,45 +51,30 @@ export default {
     currentUser(googleUser) {
       var profile = googleUser.getBasicProfile();
       var id_token = googleUser.getAuthResponse().id_token;
-      // console.log(googleUser);
-      // console.log("ID: " + profile.getId()); 
       console.log("Name: " + profile.getName());
-      // console.log("Image URL: " + profile.getImageUrl());
       console.log("Email: " + profile.getEmail()); 
-      // console.log("ID Token: " + id_token);
       this.user.id = profile.getId();
       this.user.name = profile.getName();
       this.user.image = profile.getImageUrl();
       this.user.email = profile.getEmail();
       this.user.idToken = id_token;
-      
+      localStorage.setItem('email', this.user.email)
+      localStorage.setItem('name', this.user.name)
       axios.post("/api/user/", {
         name: this.user.name,
         email: this.user.email,
         profilePic: this.user.image
-      }.bind(this))
+      })
       .then(function(data) {
-        this.$emit('googleuser', data.data)
+        console.log(data);
       })
       .catch(function(err) {
         console.log(err);
       })
-      
       this.signedIn = true;
       this.$router.push('home')
-    },
-    signOut() {
-      var auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function() {
-        console.log("User signed out.");
-      });
-      this.user.id = "";
-      this.user.name = "";
-      this.user.image = "";
-      this.user.email = "";
-      this.user.idToken = "";
-      this.signedIn = false;
-    },
+    }
+    
     
   }
 };

@@ -51,6 +51,7 @@ export default {
       this.user.email = "";
       this.user.idToken = "";
       this.signedIn = false;
+      localStorage.clear();
       setTimeout(() => this.$router.push('/'), 1500);
       
     },
