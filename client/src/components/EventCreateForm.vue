@@ -76,7 +76,7 @@ export default {
   data() {
     return {
       form: {
-        userName: '',
+        userEmail: '',
         eventName: '',
         attendanceLimit: '',
         isDate: false,
@@ -105,23 +105,29 @@ export default {
       if(this.form.isDate) {
         this.form.isDate = true;
       }
-      console.log(JSON.stringify(this.form));
+      this.form.userEmail = localStorage.getItem('email')
 
-      axios.post('/api/events/', {
-        userName: '',
-        eventName: this.form.eventName,
-        attendanceLimit: this.form.attendanceLimit,
-        isDate: this.form.isDate,
-        eventDescription: this.form.eventDescription,
-        eventLocation: this.form.eventLocation,
-      })
+      console.log("Form", JSON.stringify(this.form));
+      var self = this
+      axios.get('api/user/' + this.form.userEmail)
       .then(function(response){
-        this.$emit('updatefeed', response.data);
-        console.log("This is data: " + JSON.stringify(response.data));
-
-      }.bind(this))
-      .catch(function(err){
-        console.log(err);
+        var userId = response.data[0].id
+        console.log(userId)
+        axios.post('/api/events/', {
+          UserId: userId,
+          eventName: self.form.eventName,
+          attendanceLimit: self.form.attendanceLimit,
+          isDate: self.form.isDate,
+          eventDescription: self.form.eventDescription,
+          eventLocation: self.form.eventLocation,
+        })
+        .then(function(response){
+          self.$emit('updatefeed', response.data);
+          console.log("This is data: " + JSON.stringify(response.data));
+        })
+        .catch(function(err){
+          console.log(err);
+        })
       })
     },
     onReset(evt) {

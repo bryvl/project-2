@@ -6,20 +6,26 @@ module.exports = function(router) {
 	// Get all examples
 	router.post('/api/events/', function(req, res) {
 		db.Event
+		.create({
+			UserId: req.body.UserId,
+			userEmail: req.body.userEmail,
+			eventName: req.body.eventName,
+			attendanceLimit: req.body.attendanceLimit,
+			attending: 0,
+			isDate: req.body.isDate,
+			eventDescription: req.body.eventDescription,
+			eventLocation: req.body.eventLocation
+		})
+		.then(function(result) {
+			res.json(result);
+			console.log(result);
+			db.UserEvent
 			.create({
-				userEmail: req.body.userEmail,
-				eventName: req.body.eventName,
-				attendanceLimit: req.body.attendanceLimit,
-				attending: 0,
-				isDate: req.body.isDate,
-				eventDescription: req.body.eventDescription,
-				eventLocation: req.body.eventLocation
+				EventId: result.id,
+				UserId: result.UserId
 			})
-			.then(function(result) {
-				res.json(result);
-				// {id: result.insertId}
-				console.log(result);
-			});
+		});
+		
 	});
 
 	//Get request for all events
