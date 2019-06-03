@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-button variant="primary" v-b-modal.modal-prevent-closing>Add a Pet!</b-button>
-                  <!-- v-b-modal.modal-prevent-closing -->
+                  
     <b-modal
       id="modal-prevent-closing"
       ref="modal"
@@ -107,7 +107,8 @@ export default {
       this.form.petAge = "";
       this.form.petBreed = "";
       this.form.petSex = "",
-      this.form.petInfo = ""
+      this.form.petInfo = "",
+      this.show = false;
     },
     handleOk(bvModalEvt) {
       // Prevent modal from closing
@@ -120,6 +121,7 @@ export default {
       if (!this.checkFormValidity()) {
         return;
       }
+      
       // Push the data to the db
       axios
         .post("/api/pets/", {
@@ -138,10 +140,10 @@ export default {
           console.log(err);
         });
 
-      // Hide the modal manually
-      // this.$nextTick(() => {
-      //   this.$refs.modal.hide();
-      // });
+      //Hide the modal manually
+      this.$nextTick(() => {
+        this.$refs.modal.hide();
+      });
     }
   }
 };
