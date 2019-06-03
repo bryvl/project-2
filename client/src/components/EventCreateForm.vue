@@ -26,6 +26,16 @@
           Events must have at least 2 people attending, including you
         </b-form-invalid-feedback>        
       </b-form-group>
+      <b-form-group id="input-group-3" label="Date:" label-for="date-3">
+        <b-form-input
+          :state="attendanceLimitState"
+          type="date"
+          id="input-3"
+          v-model="form.eventDate"
+          required
+          placeholder="When is the fun happening?"
+        ></b-form-input>       
+      </b-form-group>
       <!-- <b-row class="my-1" v-for="thing in form.types" :key="thing"> -->
         <!-- <b-col sm="3">
           <label :for="`type-${thing}`">Event {{ thing }}:</label>
@@ -114,6 +124,7 @@ export default {
         isDate: this.form.isDate,
         eventDescription: this.form.eventDescription,
         eventLocation: this.form.eventLocation,
+        eventDate: this.form.eventDate
       })
       .then(function(response){
         this.$emit('updatefeed', response.data);
@@ -133,6 +144,7 @@ export default {
       // this.form.selectedPet = null
       this.form.eventDescription = ''
       this.form.eventLocation = ''
+      this.form.eventDate = false;
       // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {

@@ -10,7 +10,8 @@ module.exports = function(router) {
 				userName: req.body.userName,
 				eventName: req.body.eventName,
 				attendanceLimit: req.body.attendanceLimit,
-				attending: 0,
+        attending: 0,
+        eventDate:req.body.eventDate,
 				isDate: req.body.isDate,
 				eventDescription: req.body.eventDescription,
 				eventLocation: req.body.eventLocation
