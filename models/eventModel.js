@@ -3,6 +3,9 @@ var UserEvent = require('./userEventModel');
 
 module.exports = function(sequelize, DataTypes) {
   var Event = sequelize.define("Event", {
+    userEmail : {
+      type: DataTypes.STRING
+    },
     eventName: {
       type: DataTypes.STRING
     },
