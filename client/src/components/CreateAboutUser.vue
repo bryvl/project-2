@@ -1,58 +1,42 @@
 <template>
     <div class='form-container'>
-        <p>Add photo (or change the current one)</p>
-        <b-form @submit="onSubmit" @reset="onReset" >
-            <b-form-file v-model="file" class="mt-3" plain></b-form-file>
-            <div class="mt-3">Selected file: {{ file ? file.name : '' }}</div>
+        <b-form @reset="onReset" @submit.prevent="onSubmit()" v-if="show">
+
             <b-form-group
             id="input-group-1"
-            label="Email address:"
+            label="Photo"
             label-for="input-1"
-            description="We'll never share your email with anyone else."
+            description="Provide an updated URL link in the field above"
             >
             <b-form-input
                 id="input-1"
-                v-model="form.email"
-                type="email"
+                v-model="form.photo"
+                type="text"
                 required
-                placeholder="Enter email"
+                placeholder="Photo URL"
             ></b-form-input>
             </b-form-group>
 
-            <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
-            <b-form-input
-                id="input-2"
-                v-model="form.name"
-                required
-                placeholder="Enter name"
-            ></b-form-input>
+            <b-form-textarea
+            id="input-group-2"
+            label="Bio"
+            label-for="input-2"
+            placeholder="Say something about yourself.."
+            rows="4"
+            max-rows="6"
+            >
+            </b-form-textarea>
+
+            <b-form-group id="input-group-3">
+            <b-form-checkbox-group v-model="form.date" id="checkboxes-3">
+            <b-form-checkbox value=true>Are you open to having a date?</b-form-checkbox>
+            </b-form-checkbox-group>
             </b-form-group>
-
-            <b-form-group id="input-group-3" label="Your Pet:" label-for="input-3">
-            <b-form-input
-                id="input-3"
-                v-model="form.pet"
-                required
-                placeholder="Enter Pet Name"
-            ></b-form-input>
-            </b-form-group>
-
-
-            <b-form-group id="input-group-4" label="User Bio:" label-for="input-4">
-            <b-form-input
-                id="input-4"
-                v-model="form.bio"
-                required
-                placeholder="Say something about yourself.."
-            ></b-form-input>
-            </b-form-group>
-
-            <b-button type="submit" variant="primary">Submit</b-button>
-            <b-button type="reset" variant="danger">Reset</b-button>
-            </b-form>
-        <b-card class="mt-3" header="Your Current Info">
-        <pre class="m-0">{{ form }}</pre>
-        </b-card>
+            
+            <b-button class="mt-3 mr-1" type="submit" variant="outline-primary">Submit</b-button>
+            <b-button class="mt-3" type="reset" variant="outline-danger">Reset</b-button>
+            
+        </b-form>
     </div>
 </template>
 
@@ -62,27 +46,45 @@ import axios from 'axios'
         name: 'CreateAboutUser',
         data() {
             return {
-                file: null,
+                // file: null,
+                show: true,
                 form: {
-                    email: '',
-                    name: '',
-                    pet: '',
-                    bio: ''
+                    photo: '',
+                    bio: '',
+                    date: false
                 }
             }
         },
         methods: {
-            onSubmit(evt) {
-                evt.preventDefault()
-                alert(JSON.stringify(this.form))
+            onSubmit() {
+                
+                if(this.form.date) {
+                    this.form.date = true;
+                }
+                localStorage.setItem('image', this.form.photo)
+                let email = localStorage.getItem('email');
+
+                axios.put('/api/user/' + email, {
+                    profilePic: this.form.photo,
+                    description: this.form.bio,
+                    singleReadyMingle: this.form.date,
+                })
+                .then(function(response){
+                    console.log("This is data: " + JSON.stringify(response))
+                }.bind(this))
+                .catch(function(err){
+                    console.log(err);
+                })
+                this.$emit('hideCreateInfo')
+                
             },
             onReset(evt) {
                 evt.preventDefault()
                 // Reset our form values
-                this.form.email = ''
-                this.form.name = ''
-                this.form.pet = ''
+                this.form.photo = ''
                 this.form.bio = ''
+                this.form.pet = ''
+                this.form.date = false
                 // Trick to reset/clear native browser form validation state
                 this.show = false
                 this.$nextTick(() => {
