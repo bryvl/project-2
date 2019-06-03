@@ -68,8 +68,8 @@
           max-rows="6">
           </b-form-input>
         </b-form-group>
-      <b-button class="mt-3 mr-1" type="submit" variant="outline-primary">Submit</b-button>
-      <b-button class="mt-3" type="reset" variant="outline-danger">Reset</b-button>
+      <b-button class="mt-3 mr-1" type="submit" variant="primary">Submit</b-button>
+      <b-button class="mt-3" type="reset" variant="danger">Reset</b-button>
 
       </form>
     </b-modal>
