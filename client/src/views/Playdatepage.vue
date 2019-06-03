@@ -1,7 +1,7 @@
 <template>
   <div>
   <h1 class="title">{{playDate.eventName}}</h1>
-  <h5 class="event-date"> {{ playDate.eventDate | moment('timezone', 'America/New_York', 'dddd, MMMM Do, YYYY, h:mm:ss a') }}</h5>
+  <h5 class="event-date"> {{ playDate.eventDate | moment('timezone', 'America/New_York', 'dddd, MMMM Do, YYYY, h:mm a') }}</h5>
   <p class="from-now">{{ playDate.eventDate | moment("from", "now") }}</p>
   <p class="event-description"> {{playDate.eventDescription}}</p>
   <GoogleMap :playDate="playDate"/>
