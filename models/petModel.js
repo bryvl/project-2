@@ -2,10 +2,10 @@ var User = require('./userModel');
 
 module.exports = function(sequelize, DataTypes) {
 	var Pet = sequelize.define('Pet', {
-		name: {
+		petName: {
 			type: DataTypes.STRING
 		},
-		age: {
+		petAge: {
 			type: DataTypes.INTEGER
 		},
 		petBreed: {

@@ -50,6 +50,7 @@
       </b-card>
     </div>
     <div class="mt-5">
+      If you do not have a pet data stored, you can do so here.
       <AddPetForm/>
     </div>
   </div>
