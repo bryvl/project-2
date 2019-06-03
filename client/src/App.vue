@@ -12,7 +12,7 @@
       <button id='signout-btn' v-on:click='signOut'>Sign Out</button>
       </div>
     <div>
-      <footer v-if="$router.currentRoute.name!='home'">&copy;2019 PlayDate</footer>
+      <footer v-if="$router.currentRoute.name!='login' && $router.currentRoute.name!='home'">&copy;2019 PlayDate</footer>
     </div>
   </div>
 </template>
@@ -61,13 +61,11 @@ export default {
 
 <style lang="scss" scoped>
 #app {
-  // font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 30px;
 }
 body {
   text-align: center;

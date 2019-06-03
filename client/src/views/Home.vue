@@ -41,6 +41,20 @@ export default {
     pink-ish: #FF7474,
     black: #000
   );
+  @function color($color-name) {
+    @return map-get($colors, $color-name);
+  }
+
+  $queries: (
+    phone: "only screen and (max-width : 425px)",
+    tablet: "only screen and (max-width : 768px)",
+    computer: "only screen and (max-width : 1440px)",
+    4k:  "only screen and (max-width : 2560px)"
+  );
+  @function responsive($query-size) {
+      @return map-get($queries, $query-size);
+  }
+
   body {
         width: 100vw;
         height: 100vh;
@@ -79,9 +93,15 @@ export default {
     position: absolute;
     text-align: center;
     top: 65%;
-    width: 40vh;
+    width: 30vh;
     right: 0%;
     border-radius: 5px;
+      @media #{responsive(phone)} {
+        font-size: 1.3rem;
+        top: 50%;
+        width: 45%;
+        padding: 60px 0;
+      }
   }
   .profile {
     grid-area: main;
@@ -98,12 +118,19 @@ export default {
     position: absolute;
     text-align: center;
     top: 65%;
-    width: 40vh;
+    width: 30vh;
     left: 0%;
     border-radius: 5px;
+      @media #{responsive(phone)} {
+        font-size: 1.3rem;
+        top: 50%;
+        width: 45%;
+        padding: 60px 0;
+        left: 0%;
+      }
   }
 
-  $filter: blur(3px);
+  $filter: blur(6px);
 
   .profile:hover, .eventpage:hover {
     filter: $filter;
@@ -111,21 +138,21 @@ export default {
     transition: 400ms;
   }
   .profile-text:hover,.event-text:hover {
-    background-color: map-get($colors, red-ish);
+    background-color: color(red-ish);
     background-size: cover;
-    font-size: 4rem;
+    // font-size: 4rem;
     transition: 500ms;
     padding: 47px;
-    height: 30vw;
-    top: 30%;
+    height: 50%;
+    // top: 30%;
     animation: switch 2.5s  infinite;
   }
 @keyframes switch {
-  0% {background-color: map-get($colors, white-ish);}
-  25% {background-color: map-get($colors, pink-ish);}
-  50% {background-color: map-get($colors, red-ish);}
-  75% {background-color: map-get($colors, pink-ish);}
-  100% {background-color: map-get($colors, white-ish);}
+  0% {background-color: color(white-ish);}
+  25% {background-color: color(pink-ish);}
+  50% {background-color: color(red-ish);}
+  75% {background-color: color(pink-ish);}
+  100% {background-color: color(white-ish);}
 }
   .slider {
     height: 50px;
@@ -150,15 +177,16 @@ export default {
     box-sizing: border-box;
     font-size: 40px;
     border-radius: 5px;
+    font-weight: 600;
   }
   .playdate {
-    background-color: map-get($colors, red-ish);
+    background-color: color(red-ish);
     animation: slide 5s linear infinite;
   }
   .date {
-    background-color: map-get($colors, pink-ish);
+    background-color: color(pink-ish);
   }
   .play {
-    background-color: map-get($colors, black);
+    background-color: color(black);
   }
 </style>
