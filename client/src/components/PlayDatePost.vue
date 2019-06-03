@@ -7,7 +7,12 @@
 			<b-col md="4" sm="12">
 				<b-card-body :title="playDate.eventName">
 					<b-card-text>
-								{{ playDate.eventDate | moment('timezone', 'America/New_York', 'dddd, MMMM Do') }} <br>	DateId: {{playDate.id}} <br> Ppl Limit: {{playDate.attendanceLimit}} <br> Attending: {{playDate.attending}} <br> Date? {{playDate.isDate}} <br> Where: {{playDate.eventLocation}}
+						<strong>Ppl Limit:</strong> {{playDate.attendanceLimit}} <br> 
+						<strong> Attending: </strong> {{playDate.attending}} <br> 
+						<strong> Date?</strong> {{playDate.isDate}} <br> 
+						<strong> Where: </strong> {{playDate.eventLocation}} <br> 
+						<strong> When: </strong> <br>
+						{{playDate.eventDate | moment('timezone', 'America/New_York', 'dddd, MMMM Do, YYYY, h:mm:ss a')}}
 					</b-card-text>
 					</b-card-body>
 				</b-col>
@@ -36,7 +41,7 @@ export default {
 			}
 			this.playDate.attending++;
 		},
-		goToEventPage: function(id){
+		goToEventPage: function(){
 		
 		// console.log(id);
 		// 	axios.get('/api/events/:id')

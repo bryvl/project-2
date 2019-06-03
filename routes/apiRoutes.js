@@ -67,6 +67,17 @@ module.exports = function(router) {
 			});
 	});
 
+	// Find user by id
+	router.get("/api/user/:id", function(req, res) {
+		db.User.findAll({
+		  where: {
+			id: req.params.UserId
+		  }
+		})
+		.then(function(response) {
+			res.json(response);
+		});
+	});
 	// Find user by email
 	router.get("/api/user/:email", function(req, res) {
 		db.User.findAll({
@@ -74,9 +85,9 @@ module.exports = function(router) {
 			email: req.params.email
 		  }
 		})
-		  .then(function(response) {
-			res.json(response);
-		  });
+		.then(function(response) {
+		res.json(response);
+		});
 	});
 
 	//Get request for all users

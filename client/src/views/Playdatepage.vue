@@ -24,7 +24,7 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 import VueMoment from 'vue-moment'
 import GoogleMap from "@/components/GoogleMap.vue";
 import PlayDatePost from "@/components/PlayDatePost.vue"
@@ -46,12 +46,20 @@ export default {
   },
    data() {
     return {
+      user: {},
       status: "not_accepted"
     };
   },
   tellTime(time) {
       console.log(this.$moment(time).format(' mm:ss'))
-    }
+  },
+  created(){
+      // axios.get('api/user/' + playDate.UserId)
+      // .then(function(response){
+      //   console.log(response.data[0])
+      // })
+  }
+
 }
 
 

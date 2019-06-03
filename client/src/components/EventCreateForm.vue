@@ -54,9 +54,6 @@
         id="textarea"
         v-model="form.eventLocation"
         placeholder="Where is this happening?"></b-form-textarea>      
-      <!-- <b-form-file accept="image/jpeg, image/png" placeholder="No Image Chosen"></b-form-file> -->
-      <!-- NOTE: Below button is not refreshing page anymore. I don't want that necessarily, but  -->
-      <!-- that was the only way the feed was live updating. -->
       <b-button class="mt-3 mr-1" type="submit" variant="outline-primary">Submit</b-button>
       <b-button class="mt-3" type="reset" variant="outline-danger">Reset</b-button>
     </b-form>
@@ -80,24 +77,26 @@ export default {
   data() {
     return {
       form: {
+        userId: '',
         userEmail: '',
         eventName: '',
         attendanceLimit: '',
         isDate: false,
         // eventLocation will need to be added axios post request below
         eventLocation: "",
+        eventDate: "",
         // types: [
         //   'date',
         //   'time'
         // ],
-        selectedPet: null,
-        petOptions: [
-          // This pet options b-form-select should be generated based on the amount of pets the given user has
-          {value: null, text: 'Select a companion to join you!'},
-          {value: 'a', text: 'first user pet'},
-          {value: 'b', text: 'second user pet'},
-          {value: 'c', text: 'third user pet'}
-        ],
+        // selectedPet: null,
+        // petOptions: [
+        //   // This pet options b-form-select should be generated based on the amount of pets the given user has
+        //   {value: null, text: 'Select a companion to join you!'},
+        //   {value: 'a', text: 'first user pet'},
+        //   {value: 'b', text: 'second user pet'},
+        //   {value: 'c', text: 'third user pet'}
+        // ],
         eventDescription: ""
       },
       domain: "",
@@ -109,30 +108,38 @@ export default {
       if(this.form.isDate) {
         this.form.isDate = true;
       }
-      this.form.userEmail = localStorage.getItem('email')
 
       console.log("Form", JSON.stringify(this.form));
+      
       var self = this
-      axios.get('api/user/' + this.form.userEmail)
+      this.form.userEmail = localStorage.getItem('email')
+      this.getUser(this.form.email);
+      
+      axios.post('/api/events/', {
+        UserId: self.userId,
+        eventName: self.form.eventName,
+        attendanceLimit: self.form.attendanceLimit,
+        isDate: self.form.isDate,
+        eventDescription: self.form.eventDescription,
+        eventLocation: self.form.eventLocation,
+        eventDate: self.form.eventDate
+      })
       .then(function(response){
-        var userId = response.data[0].id
+        self.$emit('updatefeed', response.data);
+        console.log("This is data: " + JSON.stringify(response.data));
+      })
+      .catch(function(err){
+        console.log(err);
+      })
+    },
+    getUser(email){
+      axios.get('api/user/' + email)
+      .then(function(response){
+        self.userId = response.data[0].id
         console.log(userId)
-        axios.post('/api/events/', {
-          UserId: userId,
-          eventName: self.form.eventName,
-          attendanceLimit: self.form.attendanceLimit,
-          isDate: self.form.isDate,
-          eventDescription: self.form.eventDescription,
-          eventLocation: self.form.eventLocation,
-          eventDate: self.form.eventDate
-        })
-        .then(function(response){
-          self.$emit('updatefeed', response.data);
-          console.log("This is data: " + JSON.stringify(response.data));
-        })
-        .catch(function(err){
-          console.log(err);
-        })
+      })
+      .catch(function(err){
+        console.log(err);
       })
     },
     onReset(evt) {
