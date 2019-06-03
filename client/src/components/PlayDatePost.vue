@@ -7,7 +7,12 @@
 			<b-col md="4">
 				<b-card-body :title="playDate.eventName">
 					<b-card-text>
-									DateId: {{playDate.id}} <br> Ppl Limit: {{playDate.attendanceLimit}} <br> Attending: {{playDate.attending}} <br> Date? {{playDate.isDate}} <br> Bitch, Where: {{playDate.eventLocation}}
+						<strong>Ppl Limit:</strong> {{playDate.attendanceLimit}} <br> 
+						<strong> Attending: </strong> {{playDate.attending}} <br> 
+						<strong> Date?</strong> {{playDate.isDate}} <br> 
+						<strong> Where: </strong> {{playDate.eventLocation}} <br> 
+						<strong> When: </strong> <br>
+						{{playDate.eventDate | moment('timezone', 'America/New_York', 'dddd, MMMM Do, YYYY, h:mm:ss a')}}
 					</b-card-text>
 					</b-card-body>
 				</b-col>

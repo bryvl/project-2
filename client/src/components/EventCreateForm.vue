@@ -27,7 +27,7 @@
         </b-form-invalid-feedback>        
       </b-form-group>
 
-      <b-formgroup>
+      <b-form-group>
       
       <datetime id="input-group-3" label="Date:" label-for="input-3"
           type="datetime"
@@ -37,7 +37,7 @@
           placeholder="   Please specify date of play date">
         </datetime>
             
-      </b-formgroup>
+      </b-form-group>
 
       <b-form-textarea
         class="mt-3"
@@ -52,9 +52,6 @@
         id="textarea"
         v-model="form.eventLocation"
         placeholder="Where is this happening?"></b-form-textarea>      
-      <!-- <b-form-file accept="image/jpeg, image/png" placeholder="No Image Chosen"></b-form-file> -->
-      <!-- NOTE: Below button is not refreshing page anymore. I don't want that necessarily, but  -->
-      <!-- that was the only way the feed was live updating. -->
       <b-button class="mt-3 mr-1" type="submit" variant="outline-primary">Submit</b-button>
       <b-button class="mt-3" type="reset" variant="outline-danger">Reset</b-button>
     </b-form>
@@ -84,18 +81,19 @@ export default {
         isDate: false,
         // eventLocation will need to be added axios post request below
         eventLocation: "",
+        eventDate: "",
         // types: [
         //   'date',
         //   'time'
         // ],
-        selectedPet: null,
-        petOptions: [
-          // This pet options b-form-select should be generated based on the amount of pets the given user has
-          {value: null, text: 'Select a companion to join you!'},
-          {value: 'a', text: 'first user pet'},
-          {value: 'b', text: 'second user pet'},
-          {value: 'c', text: 'third user pet'}
-        ],
+        // selectedPet: null,
+        // petOptions: [
+        //   // This pet options b-form-select should be generated based on the amount of pets the given user has
+        //   {value: null, text: 'Select a companion to join you!'},
+        //   {value: 'a', text: 'first user pet'},
+        //   {value: 'b', text: 'second user pet'},
+        //   {value: 'c', text: 'third user pet'}
+        // ],
         eventDescription: ""
       },
       domain: "",
@@ -122,8 +120,8 @@ export default {
           isDate: self.form.isDate,
           eventDescription: self.form.eventDescription,
           eventLocation: self.form.eventLocation,
-          eventDate: this.form.eventDate
-        })
+          eventDate: self.form.eventDate
+        }.bind(self))
         .then(function(response){
           self.$emit('updatefeed', response.data);
           console.log("This is data: " + JSON.stringify(response.data));
