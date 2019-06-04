@@ -147,7 +147,7 @@ module.exports = function(router) {
 	});
 
 	// POST route for a saving a pet
-	router.post('/api/pets', function(req, res) {
+	router.post('/api/pets/', function(req, res) {
 		console.log(req.body);
 
 		db.Pet
