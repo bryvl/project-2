@@ -13,38 +13,36 @@
     >
       <b-form ref="form" @submit.stop.prevent="handleSubmit()">
         <b-form-group
-          :state="nameState"
           label="Pet's Name:"
           label-for="name-input"
           invalid-feedback="Name is required"
         >
-          <b-form-input id="name-input" v-model="form.petName" :state="nameState" required></b-form-input>
+          <b-form-input id="name-input" v-model="form.petName" required></b-form-input>
         </b-form-group>
 
         <b-form-group
-          :state="ageState"
           type="number"
           placeholder="Enter your pet's age in number"
           label="Pet's Age:"
           label-for="age-input"
           invalid-feedback="Age is required"
         >
-          <b-form-input id="age-input" v-model="form.petAge" :state="ageState" required></b-form-input>
+          <b-form-input id="age-input" v-model="form.petAge" required></b-form-input>
         </b-form-group>
 
         <b-form-group
-          :state="breedState"
+          required
           type="text"
           placeholder="Enter your pet's breed"
           label="Pet's Breed:"
           label-for="breed-input"
           invalid-feedback="Breed is required"
         >
-          <b-form-input id="breed-input" v-model="form.petBreed" :state="breedState" required></b-form-input>
+          <b-form-input id="breed-input" v-model="form.petBreed" required></b-form-input>
         </b-form-group>
 
         <b-form-group
-          :state="sexState"
+          required
           label="Pet's Gender:"
           label-for="sex-input"
           invalid-feedback="Gender is required"
@@ -53,7 +51,6 @@
         </b-form-group>
 
         <b-form-group
-          :state="infoState"
           label="Extra Information:"
           label-for="info-input"
           type="textarea"
@@ -63,12 +60,11 @@
           <b-form-input 
           id="info-input" 
           v-model="form.petInfo" 
-          :state="infoState"
           rows="3"
           max-rows="6">
           </b-form-input>
         </b-form-group>
-      <b-button class="mt-3 mr-1" type="submit" variant="primary">Submit</b-button>
+      <b-button class="mt-3 mr-1" type="submit" @click="handleSubmit" variant="primary">Submit</b-button>
       <b-button class="mt-3" type="reset" variant="danger">Reset</b-button>
       </b-form>
       <b-card class="mt-3" header="Your Pet's Data:">
@@ -102,14 +98,14 @@ export default {
     };
   },
   methods: {
-    checkFormValidity() {
-      const valid = this.$refs.form.checkValidity()
-      this.form.nameState = valid ? "valid" : "invalid"
-      this.form.ageState = valid ? "valid" : "invalid"
-      this.form.breedState = valid ? "valid" : "invalid"
-      this.form.sexState = valid ? "valid" : "invalid"
-      return valid;
-    },
+    // checkFormValidity() {
+    //   const valid = this.$refs.form.checkValidity()
+    //   this.form.nameState = valid ? "valid" : "invalid"
+    //   this.form.ageState = valid ? "valid" : "invalid"
+    //   this.form.breedState = valid ? "valid" : "invalid"
+    //   this.form.sexState = valid ? "valid" : "invalid"
+    //   return valid;
+    // },
     resetModal() {
       this.form.petName = "";
       this.form.petAge = "";
@@ -126,9 +122,9 @@ export default {
     },
     handleSubmit() {
       // Exit when the form isn't valid
-      if (!this.checkFormValidity()) {
-        return;
-      }
+      // if (!this.checkFormValidity()) {
+      //   return;
+      // }
       
       var self = this
       axios.get('api/user/' + this.form.userEmail)
