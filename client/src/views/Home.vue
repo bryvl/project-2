@@ -24,7 +24,7 @@ export default {
   name: 'Home',
   mounted() {
     let email = localStorage.getItem('email');
-    setTimeout(() => axios.get("/api/user/" + email, function(response) {
+    setTimeout(() => axios.get("/api/user/email/" + email, function(response) {
       })
       .then(function(response) {
         console.log(response);
