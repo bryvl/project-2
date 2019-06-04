@@ -79,7 +79,7 @@ module.exports = function(router) {
 		});
 	});
 	// Find user by email
-	router.get("/api/user/:email", function(req, res) {
+	router.get("/api/user/email/:email", function(req, res) {
 		db.User.findAll({
 		  where: {
 			email: req.params.email
