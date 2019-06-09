@@ -1,29 +1,51 @@
-# Create Vue Express App
+# PlayDate
 
-## About This Boilerplate
+## UNC Coding Bootcamp Project #2
 
-This setup allows for a Node/Express/Vue app which can be easily deployed to Heroku.
+## [Heroku Deployed Site](https://gentle-forest-99048.herokuapp.com/)
 
-The front-end Vue app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+### Contributors
 
-## Starting the app locally
+* [Ryan Brown](https://github.com/ryannbrown)
+* [Bryant Coggins](https://github.com/bcoggins78)
+* [Prasen Gope](https://github.com/prasengope)
+* [Deyon Shannon](https://github.com/dvshannon)
+* [Bryan Valencia](https://github.com/bryvl)
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+## Introduction
 
-```
-npm install
-```
+This is a full-stack web app for setting up social events for pets and their humans.  You can add or search for PlayDates for your pet while also making new friends for yourself. Get started by signing in with your Google account.  From there, you can view your profile or look for events.  At the Profile page, you can update your information and add your pet. In the Events page, you can view current events and their location, or create your own event.
 
-This should install node modules within the server and the client folder.
+## Technologies Used
 
-After both installations complete, run the following command in your terminal:
+### Front-end
 
-```
-npm start
-```
+* HTML5
+* CSS3
+* Vue.js
+* Bootstrap-vue
+* Javascript
+* Ajax
+* Moment.js
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+### Back-end
 
-## Deployment (Heroku)
+* Node.js
+* Express.js
+* Axios.js
+* MySQL
+* Sequelize.js
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+## APIs Used:
+
+* Google Maps
+* Google Authentication
+
+![Logos](\client\public\images\logos.png)
+
+![Screenshot](\client\public\images\screenshot.gif)
+
+
+
+
+
