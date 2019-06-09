@@ -22,6 +22,7 @@ This is a full-stack web app for setting up social events for pets and their hum
 
 * HTML5
 * CSS3
+* SCSS
 * Vue.js
 * Bootstrap-vue
 * Javascript
