@@ -42,9 +42,9 @@ This is a full-stack web app for setting up social events for pets and their hum
 * Google Maps
 * Google Authentication
 
-![Logos](\client\public\images\logos.png)
+![Logos](https://github.com/bryvl/project-2/blob/master/client/public/images/logos.png)
 
-![Screenshot](\client\public\images\screenshot.gif)
+![Screenshot](https://github.com/bryvl/project-2/blob/master/client/public/images/screenshot.gif)
 
 
 
