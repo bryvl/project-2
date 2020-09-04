@@ -42,7 +42,7 @@
 		"luxon": "^1.16.0",
 		"moment-timezone": "^0.5.25",
 		"mysql2": "^1.6.5",
-		"node-sass": "^4.9.0",
+		"node-sass": "^4.13.1",
 		"popper.js": "^1.15.0",
 		"portal-vue": "^2.1.4",
 		"postcss": "^7.0.16",
